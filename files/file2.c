@@ -20,6 +20,7 @@ void main() {
 
     printf("Pessoas com mais de 18 anos:\n");
 
+    // Ler o arquivo linha a linha
     while ((fscanf(f, "%s", name) == 1) && (fscanf(f, "%d", &age) == 1)) {
         // Verifica a idade das pessoas registradas
         if (age > 18) {

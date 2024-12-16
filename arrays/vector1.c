@@ -25,5 +25,5 @@ void main() {
         }
     }
 
-    printf("Contador de vogais de '%s': %d\n", str, count);
+    printf("Contador de vogais de -%s-: %d\n", str, count);
 }

@@ -5,18 +5,18 @@ The second file should contain the name and age of the people.
 The dataset contains 15 rows and the information is separated by a space.
 */
 
+// libraries included
 #include <stdio.h>
 #include <string.h>
 
-#define SIZE_LINE 100
+// constants
 #define SIZE_NAME 50
 #define SIZE_CPF 15
-
 
 int main() {
     // variable declarations
     FILE *db, *db1, *db2;
-    char line[SIZE_LINE], name[SIZE_NAME], cpf[SIZE_CPF];
+    char name[SIZE_NAME], cpf[SIZE_CPF];
     int age, i;
 
     // request to open file
@@ -43,31 +43,9 @@ int main() {
 
     // read file
     for (i = 0; i < 15; i++) {
-        /*
-        if (fscanf(db, "%14s %[^\n] %d", cpf, name, &age) == 3) {
-            fprintf(db1, "%s %s\n", cpf, name);
-            fprintf(db2, "%s %d\n", name, age);
-        } 
-        */
-         if (fgets(line, sizeof(line), db) != NULL) {
-            // Quebra a linha nos três campos
-            if (sscanf(line, "%14s %49[^0-9] %d", cpf, name, &age) == 3) {
-                // Remove espaços extras do nome
-                size_t len = strlen(name);
-                if (len > 0 && name[len - 1] == ' ') {
-                    name[len - 1] = '\0';
-                }
-
-                fprintf(db1, "%s %s\n", cpf, name);
-                fprintf(db2, "%s %d\n", name, age);
-            } else {
-                printf("Error processing line %d: %s\n", i + 1, line);
-            }
-        }
-        else {
-            printf("Error reading line %d\n", i + 1);
-            break;
-        }
+        fscanf(db, "%s %s %d", cpf, name, &age);
+        fprintf(db1, "%s %s\n", cpf, name);
+        fprintf(db2, "%s %d\n", name, age);
     }
 
     // close files

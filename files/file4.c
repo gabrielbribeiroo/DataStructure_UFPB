@@ -44,10 +44,9 @@ int main() {
     // read file
     for (i = 0; i < 15; i++) {
         if (fscanf(db, "%s %s %d", name, cpf, &age) == 3) {
-            // Escrevendo nos arquivos respeitando a ordem
             fprintf(db1, "%s %s\n", cpf, name);
             fprintf(db2, "%s %d\n", name, age);
-        } 
+        }
         else {
             printf("Error processing line %d\n", i + 1);
             break;

@@ -10,7 +10,7 @@ The dataset contains 15 rows and the information is separated by a space.
 #include <string.h>
 
 // constants
-#define SIZE_NAME 50
+#define SIZE_NAME 30
 #define SIZE_CPF 15
 
 int main() {
@@ -43,9 +43,15 @@ int main() {
 
     // read file
     for (i = 0; i < 15; i++) {
-        fscanf(db, "%s %s %d", cpf, name, &age);
-        fprintf(db1, "%s %s\n", cpf, name);
-        fprintf(db2, "%s %d\n", name, age);
+        if (fscanf(db, "%s %s %d", name, cpf, &age) == 3) {
+            // Escrevendo nos arquivos respeitando a ordem
+            fprintf(db1, "%s %s\n", cpf, name);
+            fprintf(db2, "%s %d\n", name, age);
+        } 
+        else {
+            printf("Error processing line %d\n", i + 1);
+            break;
+        }
     }
 
     // close files

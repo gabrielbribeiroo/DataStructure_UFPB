@@ -3,6 +3,7 @@ Implement a function that indicates whether a point (x,y) is located inside or o
 The rectangle is defined by its lower left (x0,y0) and upper right (x1,y1) vertices. 
 The function must have a return value of 1, if the point is inside the rectangles, and O otherwise.
 */
+
 #include <stdio.h>
 
 int is_inside(int x, int y, int x0, int y0, int x1, int y1) {

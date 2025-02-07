@@ -1,5 +1,7 @@
 /*
 Implement a function that takes a string as a parameter and replaces all letters with their successors in the alphabet. 
+The letter z must be replaced by the letter a (and Z by A). 
+Characters other than letters must remain unchanged.
 */
 
 // libraries
@@ -10,6 +12,17 @@ Implement a function that takes a string as a parameter and replaces all letters
 
 void shift_string(char *str) {
     for (int i = 0; i < strlen(str); i++) {
+        if (str[i] == 'z') {
+            str[i] = 'a';
+            continue;
+        }
+        if (str[i] == 'Z') {
+            str[i] = 'A';
+            continue;
+        }
+        if ((str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z')) {
+            continue;
+        }
         str[i] = str[i] + 1;
     }
 }

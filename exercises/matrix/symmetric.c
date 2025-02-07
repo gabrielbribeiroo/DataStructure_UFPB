@@ -2,7 +2,9 @@
 Implement one version of a function, following the different strategies discussed for matrix allocation, that determines whether a matrix is ​​square symmetric or not.
 */
 
+// libraries
 #include <stdio.h>
+#include <stdlib.h>
 
 int is_symmetric(int **matrix, int rows, int cols) {
     if (rows != cols) {
@@ -51,6 +53,6 @@ int main() {
 
     // free the allocated memory
     free(matrix);  
-    
+
     return 0;
 }

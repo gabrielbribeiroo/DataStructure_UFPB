@@ -19,7 +19,7 @@ void lower(char *str) {
 int main() {
     char str[MAX];
     printf("Enter a string: ");
-    fgets(str, MAX, stdin);
+    fgets(str, sizeof(str), stdin);
     lower(str);
     printf("The string in lowercase is: %s", str);
     return 0;

@@ -26,7 +26,7 @@ char *spin_string(const char *str1) {
         len--; // update the length of the string
     }
 
-    if (len <= 1) return; // if the string has 0 or 1 character, there is nothing to do
+    if (len <= 1) return NULL; // if the string has 0 or 1 character, there is nothing to do
 
     char last = str2[len - 1]; // save the last character
 

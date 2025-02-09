@@ -62,7 +62,7 @@ void main() {
 }
 
 void create_list(struct list *l) {
-    l->i = -1;
+    l->i = -1; // list starts empty
 }
 
 int consult_list(int p, struct list *l) {
@@ -70,26 +70,16 @@ int consult_list(int p, struct list *l) {
         return l->data[p];
     }
     else {
-        return -1;
+        return -1; // invalid position
     }
 }
 
 char full(struct list l) {
-    if (l.i == N - 1) {
-        return 1; // true
-    }
-    else {
-        return 0; // false
-    }
+    return (l.i == N - 1); // true or false
 }
 
 char empty(struct list l) {
-    if (l.i == -1) {
-        return 1; // true
-    }
-    else {
-        return 0; // false
-    }
+    return (l.i == -1); // true or false
 }
 
 char insert_list(struct list *l) {
@@ -104,14 +94,15 @@ char insert_list(struct list *l) {
     printf("Data: ");
 	scanf("%d", &d);
 
-	l->data[l->i + 1] = d; // insert data
-	l->i++; // increment occupancy control
+    l->i++; // increment occupancy control
+    l->data[l->i] = d; // insert data
 
     return 1;
 }
 
 void clean_list(struct list *l) {
     l->i = -1; // reset occupancy control
+    printf("List cleared\n");
 }
 
 int menu() {
@@ -131,7 +122,7 @@ int menu() {
 
 void print_list(struct list l) {
     printf("\nList: ");
-    for (int j = 0; j < N; j++) {
+    for (int j = 0; j < l.i; j++) {
 		printf("%d ", l.data[j]);
 	} 
 	printf("\n");
@@ -142,7 +133,6 @@ void remove_list(struct list *l) {
         printf("List is empty\n");
         return;
     }
-    else {
-        l->i--; // decrement occupancy control
-    }
+    printf("Removed: %d\n", l->data[l->i]); // Show removed element
+    l->i--; // decrement occupancy control
 }

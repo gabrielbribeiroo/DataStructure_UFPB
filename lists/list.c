@@ -23,7 +23,8 @@ char insert_start(struct list*);
 void clean_list(struct list*);
 int menu();
 void print_list(struct list);
-void remove_list(struct list*);
+void remove_end(struct list*);
+void remove_start(struct list*);
 
 int main() {
     struct list L1; // list
@@ -42,27 +43,30 @@ int main() {
                 insert_start(&L1);
                 break;
             case 3: 
-                remove_list(&L1);
+                remove_end(&L1);
                 break;
-            case 4: {
+            case 4: 
+                remove_start(&L1);
+                break;
+            case 5: {
                 int p;
                 printf("Position: ");
                 scanf("%d", &p);
                 printf("Data: %d\n", consult_list(p, &L1));
                 break;
             }
-            case 5:
+            case 6:
                 print_list(L1);
                 break;
-            case 6:
+            case 7:
                 clean_list(&L1);
                 break;
-            case 7:
+            case 8:
                 break;
             default:
                 printf("Invalid option\n");
         }
-    } while (opt != 7);
+    } while (opt != 8);
 }
 
 void create_list(struct list *l) {
@@ -134,11 +138,12 @@ int menu() {
 
     printf("\n1 - Insert end");
     printf("\n2 - Insert start");
-    printf("\n3 - Remove");
-    printf("\n4 - Consult");
-    printf("\n5 - Print");
-    printf("\n6 - Clean");
-    printf("\n7 - Exit");
+    printf("\n3 - Remove end");
+    printf("\n4 - Remove start");
+    printf("\n5 - Consult");
+    printf("\n6 - Print");
+    printf("\n7 - Clean");
+    printf("\n8 - Exit");
     printf("\nOption: ");
     scanf("%d", &opt);
 
@@ -153,11 +158,25 @@ void print_list(struct list l) {
 	printf("\n");
 }
 
-void remove_list(struct list *l) {
+void remove_end(struct list *l) {
     if (empty(*l)) {
         printf("List is empty\n");
         return;
     }
     printf("Removed: %d\n", l->data[l->i]); // Show removed element
+    l->i--; // decrement occupancy control
+}
+
+void remove_start(struct list *l) {
+    if (empty(*l)) {
+        printf("List is empty\n");
+        return;
+    }
+    printf("Removed: %d\n", l->data[0]); // Show removed element
+
+    for (int j = 0; j <= l->i; j++) {
+        l->data[j] = l->data[j + 1];
+    }
+
     l->i--; // decrement occupancy control
 }

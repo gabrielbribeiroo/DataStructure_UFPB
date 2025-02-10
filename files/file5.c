@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #define SIZE_NAME 50
 
@@ -37,7 +38,9 @@ int main() {
         return 1;
     }
 
-    while (fscanf(f1, "%s", name) != EOF) {
+    while (fgets(name, sizeof(name), f1) != NULL) {
+        // Remove newline character from name if present
+        name[strcspn(name, "\n")] = '\0';
         fscanf(f2, "%d", &age);
         fscanf(f3, " %c", &sex);
         fprintf(db, "%s %d %c\n", name, age, sex);

@@ -18,13 +18,14 @@ void create_list(struct list *);
 int consult_list(int, struct list *);
 char full(struct list);
 char empty(struct list);
-char insert_list(struct list*);
+char insert_end(struct list*);
+char insert_start(struct list*);
 void clean_list(struct list*);
 int menu();
 void print_list(struct list);
 void remove_list(struct list*);
 
-void main() {
+int main() {
     struct list L1; // list
 
     create_list(&L1); 
@@ -35,30 +36,33 @@ void main() {
 
         switch (opt) {
             case 1:
-                insert_list(&L1);
+                insert_end(&L1);
                 break;
             case 2:
+                insert_start(&L1);
+                break;
+            case 3: 
                 remove_list(&L1);
                 break;
-            case 3: {
+            case 4: {
                 int p;
                 printf("Position: ");
                 scanf("%d", &p);
                 printf("Data: %d\n", consult_list(p, &L1));
                 break;
             }
-            case 4:
+            case 5:
                 print_list(L1);
                 break;
-            case 5:
+            case 6:
                 clean_list(&L1);
                 break;
-            case 6:
+            case 7:
                 break;
             default:
                 printf("Invalid option\n");
         }
-    } while (opt != 6);
+    } while (opt != 7);
 }
 
 void create_list(struct list *l) {
@@ -82,7 +86,7 @@ char empty(struct list l) {
     return (l.i == -1); // true or false
 }
 
-char insert_list(struct list *l) {
+char insert_end(struct list *l) {
 	int d;
 	
     // checks if the list is full
@@ -100,6 +104,26 @@ char insert_list(struct list *l) {
     return 1;
 }
 
+char insert_start(struct list *l) {
+    if (full(*l)) {
+        printf("List is full\n");
+        return 0;
+    }
+
+    int d;
+    printf("Data: ");
+    scanf("%d", &d);
+
+    for (int j = l->i; j >= 0; j--) {
+        l->data[j + 1] = l->data[j];
+    }
+
+    l->data[0] = d; // insert data
+    l->i++; // increment occupancy control
+
+    return 1;
+}
+
 void clean_list(struct list *l) {
     l->i = -1; // reset occupancy control
     printf("List cleared\n");
@@ -108,12 +132,13 @@ void clean_list(struct list *l) {
 int menu() {
     int opt;
 
-    printf("\n1 - Insert");
-    printf("\n2 - Remove");
-    printf("\n3 - Consult");
-    printf("\n4 - Print");
-    printf("\n5 - Clean");
-    printf("\n6 - Exit");
+    printf("\n1 - Insert end");
+    printf("\n2 - Insert start");
+    printf("\n3 - Remove");
+    printf("\n4 - Consult");
+    printf("\n5 - Print");
+    printf("\n6 - Clean");
+    printf("\n7 - Exit");
     printf("\nOption: ");
     scanf("%d", &opt);
 
@@ -122,7 +147,7 @@ int menu() {
 
 void print_list(struct list l) {
     printf("\nList: ");
-    for (int j = 0; j < l.i; j++) {
+    for (int j = 0; j <= l.i; j++) {
 		printf("%d ", l.data[j]);
 	} 
 	printf("\n");

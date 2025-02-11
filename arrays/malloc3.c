@@ -38,7 +38,7 @@ int main() {
     // print the array
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            printf("%d ", a[i][j]);
+            printf("%4d", a[i][j]);
         }
         printf("\n");
     }

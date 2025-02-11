@@ -16,6 +16,11 @@ void create(struct list *l) {
 }
 
 void insert(struct list *l, int value) {
+    if (l->ctr == T - 1) {
+        printf("List is full\n");
+        return;
+    }
+    
     int i;
     for (i = 0; i <= l->ctr; i++) {
         if (value < l->vector[i]) {

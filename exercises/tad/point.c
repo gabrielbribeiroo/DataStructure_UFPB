@@ -1,5 +1,6 @@
 /*
-Add new information to TAD point, such as adding and subtracting points.
+Add new information to the TAD point, such as adding and subtracting points.
+Additionally, add a possible representation of the point in polar coordinates.
 */
 
 #include <stdio.h>
@@ -18,6 +19,11 @@ point *create_point(float x, float y) {
     p->x = x;
     p->y = y;
     return p;
+}
+
+void to_polar(point* p, float* r, float* theta) {
+    *r = sqrt(p->x * p->x + p->y * p->y);
+    *theta = atan2(p->y, p->x);
 }
 
 void free_point(point* p) {

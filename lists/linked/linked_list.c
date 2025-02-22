@@ -171,6 +171,42 @@ void delete_start(struct knot **l) {
     free(aux);
 }
 
+void delete_midlle(struct knot **l) {
+    struct knot *aux, *prev;
+    aux = *l;
+    prev = NULL;
+
+    int n, i = 1, pos;
+    printf("Enter the value to delete: ");
+    scanf("%d", &n); // read the data to be deleted
+    printf("Enter the position to delete: ");
+    scanf("%d", &pos); // read the position to delete the data
+
+    // search for the element
+    while (!is_empty(aux) && i < pos) {
+        prev = aux;
+        aux = aux->next;
+        i++;
+    }
+
+    // check if the element was found
+    if (is_empty(aux)) {
+        printf("Element not found\n");
+        return;
+    }
+
+    // check if the element is the first in the list
+    if (prev == NULL) {
+        *l = aux->next;
+    } 
+    else {
+        prev->next = aux->next;
+    }
+
+    // free memory of the deleted node
+    free(aux);
+}
+
 // clean the entire list
 void clean(struct knot **l) {
     struct knot *aux;
@@ -220,9 +256,9 @@ void display_menu(struct knot **l) {
         printf("\n1 - Insert start");
         printf("\n2 - Insert middle");
         printf("\n3 - Insert end");
-        printf("\n4 - Delete start")
+        printf("\n4 - Delete start");
         printf("\n5 - Delete middle");
-        printf("\n6 - Delete end")
+        printf("\n6 - Delete end");
         printf("\n7 - Clean");
         printf("\n8 - Print");
         printf("\n9 - Search");

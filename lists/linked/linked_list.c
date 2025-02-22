@@ -1,5 +1,5 @@
 /*
-Create, insert, delete, clean, and print a linked list.
+Create, insert, delete, clean, search, and print a linked list.
 */
 
 #include <stdio.h>
@@ -17,37 +17,15 @@ void insert_start(struct knot**);
 int is_empty(struct knot*);
 void delete(struct knot**);
 void clean(struct knot**);
+void search(struct knot*);
 void print(struct knot*);
-int menu();
+void display_menu(struct knot**);
 
 int main() {
     struct knot *l; // pointer to the head of the list
-    int num, opt;
 
     create(&l); // initialize the list
-
-    do {
-        opt = menu(); // display menu and get user option
-
-        switch (opt) {
-            case 1:
-                insert_start(&l); // insert a new element at the beginning of the list
-                break;
-            case 2:
-                delete(&l); // delete an element
-                break;
-            case 3: 
-                clean(&l); // clean the list
-                break;
-            case 4:
-                print(l); // print the list
-                break;
-            case 5:
-                break; // exit the program
-            default:
-                printf("Invalid option\n"); // handle invalid options
-        }
-    } while (opt != 5); // continue until the user chooses to exit
+    display_menu(&l); // display menu and handle user options
 
     return 0;
 }
@@ -68,6 +46,7 @@ void insert_start(struct knot **l) {
     }
 
     int n;
+    printf("Enter the value to insert: ");
     scanf("%d", &n); // read the data to be inserted
     
     // insert data into the new node
@@ -89,6 +68,7 @@ void delete(struct knot **l) {
     prev = NULL;
 
     int n;
+    printf("Enter the value to delete: ");
     scanf("%d", &n); // read the data to be deleted
 
     // search for the element
@@ -125,6 +105,27 @@ void clean(struct knot **l) {
     }
 }
 
+// search for an element in the list
+void search(struct knot *l) {
+    struct knot *aux = l;
+    int n;
+    printf("Enter the value to search: ");
+    scanf("%d", &n); // read the data to be searched
+
+    // search for the element
+    while (aux != NULL && aux->data != n) {
+        aux = aux->next;
+    }
+
+    // check if the element was found
+    if (aux == NULL) {
+        printf("Element not found\n");
+    } 
+    else {
+        printf("Element found\n");
+    }
+}
+
 // print all elements in the list
 void print(struct knot *l) {
     struct knot *aux = l;
@@ -136,17 +137,39 @@ void print(struct knot *l) {
     printf("\n");
 }
 
-// display menu and get user option
-int menu() {
+// display menu and handle user options
+void display_menu(struct knot **l) {
     int opt;
+    do {
+        printf("\n1 - Insert start");
+        printf("\n2 - Remove");
+        printf("\n3 - Clean");
+        printf("\n4 - Print");
+        printf("\n5 - Search");
+        printf("\n6 - Exit");
+        printf("\nOption: ");
+        scanf("%d", &opt); // read user option
 
-    printf("\n1 - Insert start");
-    printf("\n2 - Remove");
-    printf("\n3 - Clean");
-    printf("\n4 - Print");
-    printf("\n5 - Exit");
-    printf("\nOption: ");
-    scanf("%d", &opt); // read user option
-
-    return opt;
+        switch (opt) {
+            case 1:
+                insert_start(l); // insert a new element at the beginning of the list
+                break;
+            case 2:
+                delete(l); // delete an element
+                break;
+            case 3: 
+                clean(l); // clean the list
+                break;
+            case 4:
+                print(*l); // print the list
+                break;
+            case 5:
+                search(*l); // search for an element
+                break;
+            case 6:
+                break; // exit the program
+            default:
+                printf("Invalid option\n"); // handle invalid options
+        }
+    } while (opt != 6); // continue until the user chooses to exit
 }

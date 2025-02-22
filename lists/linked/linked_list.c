@@ -13,7 +13,8 @@ struct knot {
 
 // function prototypes
 void create(struct knot**);
-void insert(struct knot**);
+void insert_start(struct knot**);
+int is_empty(struct knot*);
 void delete(struct knot**);
 void clean(struct knot**);
 void print(struct knot*);
@@ -30,7 +31,7 @@ int main() {
 
         switch (opt) {
             case 1:
-                insert(&l); // dnsert a new element
+                insert_start(&l); // insert a new element at the beginning of the list
                 break;
             case 2:
                 delete(&l); // delete an element
@@ -57,7 +58,7 @@ void create(struct knot **l) {
 }
 
 // insert a new element at the beginning of the list
-void insert(struct knot **l) {
+void insert_start(struct knot **l) {
     struct knot *new;
     new = (struct knot *)malloc(sizeof(struct knot)); // allocate memory for the new node
     // check if memory was allocated
@@ -75,6 +76,10 @@ void insert(struct knot **l) {
 
     // update the head of the list
     *l = new;    
+}
+
+int is_empty(struct knot *l) {
+    return l == NULL;
 }
 
 // delete an element from the list
@@ -135,7 +140,7 @@ void print(struct knot *l) {
 int menu() {
     int opt;
 
-    printf("\n1 - Insert");
+    printf("\n1 - Insert start");
     printf("\n2 - Remove");
     printf("\n3 - Clean");
     printf("\n4 - Print");

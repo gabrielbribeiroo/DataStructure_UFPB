@@ -14,6 +14,7 @@ struct knot {
 // function prototypes
 void create(struct knot**);
 void insert_start(struct knot**);
+void insert_middle(struct knot**);
 void insert_end(struct knot**);
 int is_empty(struct knot*);
 void delete(struct knot**);
@@ -58,6 +59,46 @@ void insert_start(struct knot **l) {
     *l = new;    
 }
 
+// insert a new element in the middle of the list
+void insert_middle(struct knot **l) {
+    struct knot *new, *aux, *prev;
+    new = (struct knot *)malloc(sizeof(struct knot)); // allocate memory for the new node
+    // check if memory was allocated
+    if (new == NULL) {
+        printf("Memory allocation error\n");
+        exit(1);
+    }
+
+    int n, pos, i = 1;
+    printf("Enter the value to insert: ");
+    scanf("%d", &n); // read the data to be inserted
+    printf("Enter the position to insert: ");
+    scanf("%d", &pos); // read the position to insert the data
+
+    // insert data into the new node
+    new->data = n;
+    new->next = NULL;
+
+    // if the list is empty, the new node becomes the head
+    if (is_empty(*l)) {
+        *l = new;
+    } 
+    else {
+        // traverse to the position to insert the new node
+        aux = *l;
+        prev = NULL;
+        while (!is_empty(aux) && i < pos) {
+            prev = aux;
+            aux = aux->next;
+            i++;
+        }
+        // insert the new node in the middle
+        prev->next = new;
+        new->next = aux;
+    }
+}
+
+// insert a new element at the end of the list
 void insert_end(struct knot **l) {
     struct knot *new, *aux;
     new = (struct knot *)malloc(sizeof(struct knot)); // allocate memory for the new node
@@ -175,12 +216,13 @@ void display_menu(struct knot **l) {
     int opt;
     do {
         printf("\n1 - Insert start");
-        printf("\n2 - Insert end");
-        printf("\n3 - Remove");
-        printf("\n4 - Clean");
-        printf("\n5 - Print");
-        printf("\n6 - Search");
-        printf("\n7 - Exit");
+        printf("\n2 - Insert middle");
+        printf("\n3 - Insert end");
+        printf("\n4 - Remove");
+        printf("\n5 - Clean");
+        printf("\n6 - Print");
+        printf("\n7 - Search");
+        printf("\n8 - Exit");
         printf("\nOption: ");
         scanf("%d", &opt); // read user option
 
@@ -189,25 +231,28 @@ void display_menu(struct knot **l) {
                 insert_start(l); // insert a new element at the beginning of the list
                 break;
             case 2:
-                insert_end(l); // insert a new element at the end of the list
+                insert_middle(l); // insert a new element in the middle of the list
                 break;
             case 3:
+                insert_end(l); // insert a new element at the end of the list
+                break;
+            case 4:
                 delete(l); // delete an element
                 break;
-            case 4: 
+            case 5: 
                 clean(l); // clean the list
                 break;
-            case 5:
+            case 6:
                 print(*l); // print the list
                 break;
-            case 6:
+            case 7:
                 search(*l); // search for an element
                 break;
-            case 7:
+            case 8:
                 free(*l); // free memory of the list
                 break; // exit the program
             default:
                 printf("Invalid option\n"); // handle invalid options
         }
-    } while (opt != 7); // continue until the user chooses to exit
+    } while (opt != 8); // continue until the user chooses to exit
 }

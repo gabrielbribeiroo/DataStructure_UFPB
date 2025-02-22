@@ -9,7 +9,7 @@ Create, insert, delete, clean, search, and print a linked list.
 struct knot {
     int data; // data stored in the node
     struct knot *next; // pointer to the next node
-} *l;
+};
 
 // function prototypes
 void create(struct knot**);
@@ -95,7 +95,9 @@ void insert_middle(struct knot **l) {
             i++;
         }
         // insert the new node in the middle
-        prev->next = new;
+        if (prev != NULL) {
+            prev->next = new;
+        }
         new->next = aux;
     }
 }
@@ -140,51 +142,31 @@ int is_empty(struct knot *l) {
 
 // delete an element from the list at the beginning of the list
 void delete_start(struct knot **l) {
-    struct knot *aux, *prev;
-    aux = *l;
-    prev = NULL;
-
-    int n;
-    printf("Enter the value to delete: ");
-    scanf("%d", &n); // read the data to be deleted
-
-    // search for the element
-    while (!is_empty(aux) && aux->data != n) {
-        prev = aux;
-        aux = aux->next;
-    }
-
-    // check if the element was found
-    if (is_empty(aux)) {
-        printf("Element not found\n");
+    if (is_empty(*l)) {
+        printf("List is empty\n");
         return;
     }
 
-    // check if the element is the first in the list
-    if (prev == NULL) {
-        *l = aux->next;
-    } 
-    else {
-        prev->next = aux->next;
-    }
+    struct knot *aux = *l;
+    *l = aux->next;
 
     // free memory of the deleted node
     free(aux);
 }
 
-// delete an element from the list at the end of the list
-void delete_midlle(struct knot **l) {
-    struct knot *aux, *prev;
-    aux = *l;
-    prev = NULL;
+// delete an element from the list in the middle of the list
+void delete_middle(struct knot **l) {
+    if (is_empty(*l)) {
+        printf("List is empty\n");
+        return;
+    }
 
-    int n, i = 1, pos;
-    printf("Enter the value to delete: ");
-    scanf("%d", &n); // read the data to be deleted
+    struct knot *aux = *l, *prev = NULL;
+    int pos, i = 1;
     printf("Enter the position to delete: ");
     scanf("%d", &pos); // read the position to delete the data
 
-    // search for the element
+    // traverse to the position to delete the node
     while (!is_empty(aux) && i < pos) {
         prev = aux;
         aux = aux->next;
@@ -193,7 +175,7 @@ void delete_midlle(struct knot **l) {
 
     // check if the element was found
     if (is_empty(aux)) {
-        printf("Element not found\n");
+        printf("Position not found\n");
         return;
     }
 
@@ -211,32 +193,25 @@ void delete_midlle(struct knot **l) {
 
 // delete an element from the list at the end of the list
 void delete_end(struct knot **l) {
-    struct knot *aux, *prev;
-    aux = *l;
-    prev = NULL;
+    if (is_empty(*l)) {
+        printf("List is empty\n");
+        return;
+    }
 
-    int n;
-    printf("Enter the value to delete: ");
-    scanf("%d", &n); // read the data to be deleted
+    struct knot *aux = *l, *prev = NULL;
 
-    // search for the element
-    while (!is_empty(aux) && aux->data != n) {
+    // traverse to the end of the list
+    while (aux->next != NULL) {
         prev = aux;
         aux = aux->next;
     }
 
-    // check if the element was found
-    if (is_empty(aux)) {
-        printf("Element not found\n");
-        return;
-    }
-
     // check if the element is the first in the list
     if (prev == NULL) {
-        *l = aux->next;
+        *l = NULL;
     } 
     else {
-        prev->next = aux->next;
+        prev->next = NULL;
     }
 
     // free memory of the deleted node
@@ -331,7 +306,7 @@ void display_menu(struct knot **l) {
                 search(*l); // search for an element
                 break;
             case 10:
-                free(*l); // free memory of the list
+                clean(l); // clean the list before exiting
                 break; // exit the program
             default:
                 printf("Invalid option\n"); // handle invalid options

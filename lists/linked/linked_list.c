@@ -17,7 +17,9 @@ void insert_start(struct knot**);
 void insert_middle(struct knot**);
 void insert_end(struct knot**);
 int is_empty(struct knot*);
-void delete(struct knot**);
+void delete_start(struct knot**);
+void delete_middle(struct knot**);
+void delete_end(struct knot**);
 void clean(struct knot**);
 void search(struct knot*);
 void print(struct knot*);
@@ -135,8 +137,8 @@ int is_empty(struct knot *l) {
     return l == NULL;
 }
 
-// delete an element from the list
-void delete(struct knot **l) {
+// delete an element from the list at the beginning of the list
+void delete_start(struct knot **l) {
     struct knot *aux, *prev;
     aux = *l;
     prev = NULL;
@@ -218,11 +220,13 @@ void display_menu(struct knot **l) {
         printf("\n1 - Insert start");
         printf("\n2 - Insert middle");
         printf("\n3 - Insert end");
-        printf("\n4 - Remove");
-        printf("\n5 - Clean");
-        printf("\n6 - Print");
-        printf("\n7 - Search");
-        printf("\n8 - Exit");
+        printf("\n4 - Delete start")
+        printf("\n5 - Delete middle");
+        printf("\n6 - Delete end")
+        printf("\n7 - Clean");
+        printf("\n8 - Print");
+        printf("\n9 - Search");
+        printf("\n10 - Exit");
         printf("\nOption: ");
         scanf("%d", &opt); // read user option
 
@@ -236,23 +240,29 @@ void display_menu(struct knot **l) {
             case 3:
                 insert_end(l); // insert a new element at the end of the list
                 break;
-            case 4:
-                delete(l); // delete an element
+            case 4: 
+                delete_start(l); // remove the element at the beginning of the list
                 break;
-            case 5: 
-                clean(l); // clean the list
+            case 5:
+                delete_middle(l); // remove an element in the middle of the list
                 break;
             case 6:
-                print(*l); // print the list
+                delete_end(l); // remove the element at the end of the list
                 break;
-            case 7:
-                search(*l); // search for an element
+            case 7: 
+                clean(l); // clean the list
                 break;
             case 8:
+                print(*l); // print the list
+                break;
+            case 9:
+                search(*l); // search for an element
+                break;
+            case 10:
                 free(*l); // free memory of the list
                 break; // exit the program
             default:
                 printf("Invalid option\n"); // handle invalid options
         }
-    } while (opt != 8); // continue until the user chooses to exit
+    } while (opt != 10); // continue until the user chooses to exit
 }

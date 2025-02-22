@@ -59,7 +59,7 @@ void insert_start(struct knot **l) {
 }
 
 void insert_end(struct knot **l) {
-    struct knot *new;
+    struct knot *new, *aux;
     new = (struct knot *)malloc(sizeof(struct knot)); // allocate memory for the new node
     // check if memory was allocated
     if (new == NULL) {
@@ -72,12 +72,22 @@ void insert_end(struct knot **l) {
     scanf("%d", &n); // read the data to be inserted
 
     // insert data into the new node
-    for (new = *l; &l, new->next; new = new->next);
     new->data = n;
     new->next = NULL;
 
-    // update the head of the list
-    *l = new;
+    // if the list is empty, the new node becomes the head
+    if (is_empty(*l)) {
+        *l = new;
+    } 
+    else {
+        // traverse to the end of the list
+        aux = *l;
+        while (aux->next != NULL) {
+            aux = aux->next;
+        }
+        // insert the new node at the end
+        aux->next = new;
+    }
 }
 
 int is_empty(struct knot *l) {
@@ -95,13 +105,13 @@ void delete(struct knot **l) {
     scanf("%d", &n); // read the data to be deleted
 
     // search for the element
-    while (aux != NULL && aux->data != n) {
+    while (!is_empty(aux) && aux->data != n) {
         prev = aux;
         aux = aux->next;
     }
 
     // check if the element was found
-    if (aux == NULL) {
+    if (is_empty(aux)) {
         printf("Element not found\n");
         return;
     }
@@ -121,7 +131,7 @@ void delete(struct knot **l) {
 // clean the entire list
 void clean(struct knot **l) {
     struct knot *aux;
-    while (*l) {
+    while (!is_empty(*l)) {
         aux = *l;
         *l = (*l)->next;
         free(aux); // free memory of each node
@@ -136,12 +146,12 @@ void search(struct knot *l) {
     scanf("%d", &n); // read the data to be searched
 
     // search for the element
-    while (aux != NULL && aux->data != n) {
+    while (!is_empty(aux) && aux->data != n) {
         aux = aux->next;
     }
 
     // check if the element was found
-    if (aux == NULL) {
+    if (is_empty(aux)) {
         printf("Element not found\n");
     } 
     else {
@@ -153,7 +163,7 @@ void search(struct knot *l) {
 void print(struct knot *l) {
     struct knot *aux = l;
     printf("\nList: ");
-    while (aux != NULL) {
+    while (!is_empty(aux)) {
         printf("%d ", aux->data); // print data of each node
         aux = aux->next;
     }

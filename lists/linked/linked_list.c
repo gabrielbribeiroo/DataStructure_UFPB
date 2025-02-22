@@ -14,6 +14,7 @@ struct knot {
 // function prototypes
 void create(struct knot**);
 void insert_start(struct knot**);
+void insert_end(struct knot**);
 int is_empty(struct knot*);
 void delete(struct knot**);
 void clean(struct knot**);
@@ -55,6 +56,28 @@ void insert_start(struct knot **l) {
 
     // update the head of the list
     *l = new;    
+}
+
+void insert_end(struct knot **l) {
+    struct knot *new;
+    new = (struct knot *)malloc(sizeof(struct knot)); // allocate memory for the new node
+    // check if memory was allocated
+    if (new == NULL) {
+        printf("Memory allocation error\n");
+        exit(1);
+    }
+
+    int n;
+    printf("Enter the value to insert: ");
+    scanf("%d", &n); // read the data to be inserted
+
+    // insert data into the new node
+    for (new = *l; &l, new->next; new = new->next);
+    new->data = n;
+    new->next = NULL;
+
+    // update the head of the list
+    *l = new;
 }
 
 int is_empty(struct knot *l) {
@@ -142,11 +165,12 @@ void display_menu(struct knot **l) {
     int opt;
     do {
         printf("\n1 - Insert start");
-        printf("\n2 - Remove");
-        printf("\n3 - Clean");
-        printf("\n4 - Print");
-        printf("\n5 - Search");
-        printf("\n6 - Exit");
+        printf("\n2 - Insert end");
+        printf("\n3 - Remove");
+        printf("\n4 - Clean");
+        printf("\n5 - Print");
+        printf("\n6 - Search");
+        printf("\n7 - Exit");
         printf("\nOption: ");
         scanf("%d", &opt); // read user option
 
@@ -155,21 +179,25 @@ void display_menu(struct knot **l) {
                 insert_start(l); // insert a new element at the beginning of the list
                 break;
             case 2:
+                insert_end(l); // insert a new element at the end of the list
+                break;
+            case 3:
                 delete(l); // delete an element
                 break;
-            case 3: 
+            case 4: 
                 clean(l); // clean the list
                 break;
-            case 4:
+            case 5:
                 print(*l); // print the list
                 break;
-            case 5:
+            case 6:
                 search(*l); // search for an element
                 break;
-            case 6:
+            case 7:
+                free(*l); // free memory of the list
                 break; // exit the program
             default:
                 printf("Invalid option\n"); // handle invalid options
         }
-    } while (opt != 6); // continue until the user chooses to exit
+    } while (opt != 7); // continue until the user chooses to exit
 }

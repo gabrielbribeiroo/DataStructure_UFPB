@@ -133,6 +133,7 @@ void insert_end(struct knot **l) {
     }
 }
 
+// check if the list is empty
 int is_empty(struct knot *l) {
     return l == NULL;
 }
@@ -171,6 +172,7 @@ void delete_start(struct knot **l) {
     free(aux);
 }
 
+// delete an element from the list at the end of the list
 void delete_midlle(struct knot **l) {
     struct knot *aux, *prev;
     aux = *l;
@@ -187,6 +189,40 @@ void delete_midlle(struct knot **l) {
         prev = aux;
         aux = aux->next;
         i++;
+    }
+
+    // check if the element was found
+    if (is_empty(aux)) {
+        printf("Element not found\n");
+        return;
+    }
+
+    // check if the element is the first in the list
+    if (prev == NULL) {
+        *l = aux->next;
+    } 
+    else {
+        prev->next = aux->next;
+    }
+
+    // free memory of the deleted node
+    free(aux);
+}
+
+// delete an element from the list at the end of the list
+void delete_end(struct knot **l) {
+    struct knot *aux, *prev;
+    aux = *l;
+    prev = NULL;
+
+    int n;
+    printf("Enter the value to delete: ");
+    scanf("%d", &n); // read the data to be deleted
+
+    // search for the element
+    while (!is_empty(aux) && aux->data != n) {
+        prev = aux;
+        aux = aux->next;
     }
 
     // check if the element was found

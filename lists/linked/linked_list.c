@@ -1,6 +1,14 @@
-/*
-Create, insert, delete, clean, search, and print a linked list.
-*/
+/**
+ * @file linked_list.c
+ * @brief Linked list implementation in C
+ * 
+ * This program implements a linked list in C. 
+ * It provides the interactive menu.
+ *
+ * @author Gabriel Ribeiro
+ * @version 2.0
+ * @date 2025-02-24   
+ */
 
 // include libraries
 #include "create.h"

@@ -9,6 +9,7 @@
 
 #include "insert.h"
 
+// insert a new element at the beginning of the list
 void insert_start(struct knot **l) {
     struct knot *new;
     new = (struct knot *)malloc(sizeof(struct knot)); // allocate memory for the new node

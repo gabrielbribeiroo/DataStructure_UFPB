@@ -1,7 +1,7 @@
 #ifndef INSERT_H // checks if the header has already been included
 #define INSERT_H // if not, define the header
 
-#include <stdlib.h> // for malloc
+#include "create.h"
 
 /**
  * @brief Inserts a new element at the beginning of the list

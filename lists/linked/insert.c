@@ -104,3 +104,8 @@ void insert_end(struct knot **l) {
         aux->next = new;
     }
 }
+
+// checks if the list is empty
+int is_empty(struct knot *l) {
+    return l == NULL;
+}

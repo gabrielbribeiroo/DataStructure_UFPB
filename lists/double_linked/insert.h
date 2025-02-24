@@ -5,23 +5,27 @@
 
 /**
  * @brief Inserts a new element at the beginning of the list
- * @param knot A double pointer to the head of the linked list.
+ * 
+ * @param list A double pointer to the head of the list.
+ * @param node A double pointer to the head of the node.
  * @return void
  */
-void insert_start(struct knot**);
+void insert_start(struct list**, struct node**);
 
 /**
- * @brief Inserts a new node in the middle of a linked list.
- * @param knot A double pointer to the head of the linked list.
+ * @brief Inserts a new node in the middle of a linked list
+ * @param list A double pointer to the head of the list.
+ * @param node A double pointer to the head of the node.
  * @return void
  */
-void insert_middle(struct knot**);
+void insert_middle(struct list**, struct node**);
 
 /**
- * @brief Inserts a new element at the end of the list
- * @param knot A double pointer to the head of the linked list.
+ * @brief Inserts a new element at the end of the linked list
+ * @param list A double pointer to the head of the list.
+ * @param node A double pointer to the head of the node.
  * @return void
  */
-void insert_end(struct knot**);
+void insert_end(struct list**, struct node**);
 
 #endif // end of the header guard

@@ -21,8 +21,6 @@ struct knot {
  * @return void
  */
 // initialize the list to be empty
-void create(struct knot **l) {
-    *l = NULL;
-}
+void create(struct knot**);
 
 #endif // end of the header guard

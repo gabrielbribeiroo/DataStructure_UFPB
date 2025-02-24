@@ -24,7 +24,6 @@ void insert_middle(struct knot**);
  */
 void insert_end(struct knot**);
 
-
 /**
  * @brief Checks if the list is empty
  * @param knot A pointer to the head of the linked list.

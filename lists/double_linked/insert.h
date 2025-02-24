@@ -7,25 +7,22 @@
  * @brief Inserts a new element at the beginning of the list
  * 
  * @param list A double pointer to the head of the list.
- * @param node A double pointer to the head of the node.
  * @return void
  */
-void insert_start(struct list**, struct node**);
+void insert_start(struct list**);
 
 /**
  * @brief Inserts a new node in the middle of a linked list
  * @param list A double pointer to the head of the list.
- * @param node A double pointer to the head of the node.
  * @return void
  */
-void insert_middle(struct list**, struct node**);
+void insert_middle(struct list**);
 
 /**
  * @brief Inserts a new element at the end of the linked list
  * @param list A double pointer to the head of the list.
- * @param node A double pointer to the head of the node.
  * @return void
  */
-void insert_end(struct list**, struct node**);
+void insert_end(struct list**);
 
 #endif // end of the header guard

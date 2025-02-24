@@ -23,4 +23,11 @@ struct knot {
 // initialize the list to be empty
 void create(struct knot**);
 
+/**
+ * @brief Checks if the list is empty
+ * @param knot A pointer to the head of the linked list.
+ * @return int Returns 1 if the list is empty, 0 otherwise. * 
+ */
+int is_empty(struct knot*);
+
 #endif // end of the header guard

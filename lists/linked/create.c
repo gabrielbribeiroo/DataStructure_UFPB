@@ -13,3 +13,8 @@
 void create(struct knot **l) {
     *l = NULL;
 }
+
+// checks if the list is empty
+int is_empty(struct knot *l) {
+    return l == NULL;
+}

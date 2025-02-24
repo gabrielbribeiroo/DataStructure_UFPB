@@ -1,6 +1,7 @@
 #ifndef CREATE_H // checks if the header has already been included
 #define CREATE_H // if not, define the header
 
+#include <stdio.h> // for printf
 #include <stdlib.h> // for malloc
 
 /**

@@ -17,15 +17,14 @@
 #include "route.h"
 
 // struct list is already defined in create.h
-
 // function prototype
 void display_menu(struct list**);
 
 int main() {
-    struct list **l; // pointer to the head of the list
+    struct list *l; // pointer to the head of the list
 
-    create(l); // initialize the list
-    display_menu(l); // display menu and handle user options
+    create(&l); // initialize the list
+    display_menu(&l); // display menu and handle user options
 
     return 0;
 }
@@ -54,27 +53,37 @@ void display_menu(struct list **l) {
                 break;
             case 2:
                 insert_middle(l); // insert a new element in the middle of the list
+                break;
             case 3:
                 insert_end(l); // insert a new element at the end of the list
+                break;
             case 4: 
                 delete_start(l); // remove the element at the beginning of the list
+                break;
             case 5:
                 delete_middle(l); // remove an element in the middle of the list
+                break;
             case 6:
                 delete_end(l); // remove the element at the end of the list
+                break;
             case 7: 
                 clean(l); // clean the list
+                break;
             case 8:
                 print1(l); // print the list from the beginning to the end
+                break;
             case 9:
                 print2(l); // print the list from the end to the beginning
+                break;
             case 10:
                 search(l); // search for an element
+                break;
             case 11:
                 clean(l); // clean the list before exiting
+                break;
             default:
                 printf("Invalid option\n"); // handle invalid options
-                clean(l); // clean the list before exiting
+                break;
         }
     } while (opt != 11); // continue until the user chooses to exit
 }

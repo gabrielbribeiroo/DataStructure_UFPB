@@ -47,9 +47,9 @@ void create_node(struct node**);
 /**
  * @brief Checks if the linked list is empty.
  * 
- * @param l A pointer to the head of the linked list.
+ * @param l A double pointer to the head of the linked list.
  * @return int 1 if the list is empty, 0 otherwise.
  */
-int is_empty(struct list*);
+int is_empty(struct list**);
 
 #endif // end of the header guard

@@ -14,7 +14,7 @@ void delete_start(struct list **l) {
     struct node *aux;
     aux = (*l)->begin; // get the first element of the list
 
-    if (!(is_empty(*l))) {
+    if (!(is_empty(l))) {
         // if the list has only one element
         if ((*l)->begin == (*l)->end) {
             (*l)->begin = NULL;
@@ -44,7 +44,7 @@ void delete_middle(struct list **l) {
         i++;
     }
 
-    if (!(is_empty(*l))) {
+    if (!(is_empty(l))) {
         // if the node to be deleted is the first element
         if (aux == (*l)->begin) {
             delete_start(l);
@@ -67,7 +67,7 @@ void delete_end(struct list **l) {
     struct node *aux;
     aux = (*l)->end; // get the last element of the list
 
-    if (!(is_empty(*l))) {
+    if (!(is_empty(l))) {
         // if the list has only one element
         if ((*l)->begin == (*l)->end) {
             (*l)->begin = NULL;

@@ -6,7 +6,7 @@
  * It provides the interactive menu.
  * 
  * @author Gabriel Ribeiro
- * @version 1.0
+ * @version 3.0
  * @date 2025-02-25
  */
 
@@ -23,7 +23,7 @@ void display_menu(struct list**);
 int main() {
     struct list *l; // pointer to the head of the list
 
-    create(&l); // initialize the list
+    create_list(&l); // initialize the list
     display_menu(&l); // display menu and handle user options
 
     return 0;

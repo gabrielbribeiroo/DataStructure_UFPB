@@ -22,7 +22,7 @@ void insert_start(struct list **l) {
     new->data = n;
 
     // if the list is not empty, update the previous pointer of the next node
-    if (!(is_empty(*l))) {
+    if (!(is_empty(l))) {
         new->next = (*l)->begin;
         (*l)->begin->prev = new; 
         // update the head of the list
@@ -56,7 +56,7 @@ void insert_middle(struct list **l) {
         i++;
     }
 
-    if (!(is_empty(&l))) {
+    if (!(is_empty(l))) {
         new->prev = aux->prev;
         new->next = aux;
         new->prev->next = new;
@@ -82,7 +82,7 @@ void insert_end(struct list **l) {
     new->data = n;
 
     // if the list is not empty, update the next pointer of the previous node
-    if (!(is_empty(*l))) {
+    if (!(is_empty(l))) {
         new->prev = (*l)->end;
         (*l)->end->next = new;
         (*l)->end = new;

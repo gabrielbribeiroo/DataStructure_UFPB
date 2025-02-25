@@ -24,6 +24,6 @@ void create_node(struct node **n) {
 }
 
 // checks if the list is empty
-int is_empty(struct list *l) {
-    return (l->begin == NULL && l->end == NULL);
+int is_empty(struct list **l) {
+    return ((*l)->begin == NULL && (*l)->end == NULL);
 }

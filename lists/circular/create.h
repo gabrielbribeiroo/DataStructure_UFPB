@@ -26,7 +26,7 @@ struct vector {
  * @param l A pointer to the head of the vector.
  * @return void
  */
-void create_list(struct vector *);
+void create_vector_list(struct vector *l);
 
 /**
  * @brief Checks if the list is full.
@@ -34,7 +34,7 @@ void create_list(struct vector *);
  * @param l The vector.
  * @return char 1 if the list is full, 0 otherwise.
  */
-char full(struct vector);
+char vector_full(struct vector l);
 
 /**
  * @brief Checks if the list is empty.
@@ -42,7 +42,7 @@ char full(struct vector);
  * @param l The vector.
  * @return char 1 if the list is empty, 0 otherwise.
  */
-char empty(struct vector);
+char vector_empty(struct vector l);
 
 
 // circular list by linked list
@@ -63,15 +63,15 @@ struct node {
  * @param l A double pointer to the head of the linked list.
  * @return void
  */
-void create_list(struct node**);
+void create_linked_list(struct node **l);
 
 /**
  * @brief Checks if the linked list is empty.
  * 
- * @param l A ointer to the head of the linked list.
- * @return int 1 if the list is empty, 0 otherwise.
+ * @param l A pointer to the head of the linked list.
+ * @return char 1 if the list is empty, 0 otherwise.
  */
-char empty(struct node*);
+char linked_list_empty(struct node *l);
 
 
 // circular list by double linked list
@@ -83,9 +83,9 @@ char empty(struct node*);
  * @param next A pointer to the next node.
  */
 struct dnode {
-    struct node *prev;
+    struct dnode *prev;
     int data;
-    struct node *next;
+    struct dnode *next;
 };
 
 /**
@@ -95,8 +95,8 @@ struct dnode {
  * @param end A pointer to the last node.
  */
 struct list {
-    struct node *begin;
-    struct node *end;
+    struct dnode *begin;
+    struct dnode *end;
 };
 
 /**
@@ -105,22 +105,14 @@ struct list {
  * @param l A double pointer to the head of the linked list.
  * @return void
  */
-void create_list(struct list**);
-
-/**
- * @brief Creates a new node in the linked list.
- * 
- * @param n A double pointer to the node to be created.
- * @return void
- */
-void create_node(struct node**);
+void create_double_linked_list(struct list **l);
 
 /**
  * @brief Checks if the linked list is empty.
  * 
- * @param l A double pointer to the head of the linked list.
+ * @param l A pointer to the head of the linked list.
  * @return char 1 if the list is empty, 0 otherwise.
  */
-char empty(struct list**);
+char double_linked_list_empty(struct list *l);
 
 #endif // end of the header guard

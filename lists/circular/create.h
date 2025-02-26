@@ -108,6 +108,14 @@ struct list {
 void create_double_linked_list(struct list **l);
 
 /**
+ * @brief Creates a new node in the linked list.
+ * 
+ * @param n A double pointer to the node.
+ * @return void
+ */
+void create_double_linked_node(struct dnode **n);
+
+/**
  * @brief Checks if the linked list is empty.
  * 
  * @param l A pointer to the head of the linked list.

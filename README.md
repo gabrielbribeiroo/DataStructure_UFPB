@@ -7,7 +7,7 @@ This repository contains exercise codes for the Data Structure discipline carrie
 - **Code organization**: Manipulate and access data in multiple formats.
 - **Efficiency and performance**: Maximize software effectiveness.
 - **Optimization**: Optimize algorithm time and space.
-- **Operation of data processing**: Have an in-depth understanding of how to efficiently store, access, and manipulate data.
+- **Operation of data processing**: Have an in-depth understanding of efficiently storing, accessing, and manipulating data.
 
 ## Languages
 <div style="display: inline_block"><cbr>

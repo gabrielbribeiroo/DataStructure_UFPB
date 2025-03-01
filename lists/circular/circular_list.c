@@ -3,7 +3,7 @@
  * @brief Implementation of circular linked list.
  * 
  * @author Gabriel Ribeiro
- * @version 1.0
+ * @version 2.0
  * @date 2025-03-01 
  */
 
@@ -31,16 +31,10 @@ int main() {
                 scanf("%d", &opt);
                 switch (opt) {
                     case 1:
-                        int data;
-                        printf("Data: ");
-                        scanf("%d", &data);
-                        insert_end_vector(l, data);
+                        insert_end_vector(l);
                         break;
                     case 2:
-                        int data;
-                        printf("Data: ");
-                        scanf("%d", &data);
-                        insert_begin_vector(l, data);
+                        insert_begin_vector(l);
                         break;
                     case 3:
                         delete_end_vector(l);
@@ -77,22 +71,13 @@ int main() {
                 scanf("%d", &opt);
                 switch (opt) {
                     case 1:
-                        int data;
-                        printf("Data: ");
-                        scanf("%d", &data);
-                        insert_begin_linked_list(l, data);
+                        insert_begin_linked_list(l);
                         break;
                     case 2:
-                        int data;
-                        printf("Data: ");
-                        scanf("%d", &data);
-                        insert_middle_linked_list(l, data);
+                        insert_middle_linked_list(l);
                         break;
                     case 3:
-                        int data;
-                        printf("Data: ");
-                        scanf("%d", &data);
-                        insert_end_linked_list(l, data);
+                        insert_end_linked_list(l);
                         break;
                     case 4:
                         delete_begin_linked_list(l);
@@ -130,22 +115,13 @@ int main() {
                 create_double_linked_node(p);
                 switch (opt) {
                     case 1:
-                        int data;
-                        printf("Data: ");
-                        scanf("%d", &data);
-                        insert_begin_double_linked_list(l, data);
+                        insert_begin_double_linked_list(l);
                         break;
                     case 2:
-                        int data;
-                        printf("Data: ");
-                        scanf("%d", &data);
-                        insert_middle_double_linked_list(l, data);
+                        insert_middle_double_linked_list(l);
                         break;
                     case 3:
-                        int data;
-                        printf("Data: ");
-                        scanf("%d", &data);
-                        insert_end_double_linked_list(l, data);
+                        insert_end_double_linked_list(l);
                         break;
                     case 4:
                         delete_begin_double_linked_list(l);

@@ -12,3 +12,9 @@
 #include "insert.h"
 #include "delete.h"
 #include "route.h"
+#include "menu.h"
+
+// main function
+int main() {
+    return 0;
+}

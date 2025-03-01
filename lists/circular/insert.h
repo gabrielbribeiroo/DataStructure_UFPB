@@ -62,7 +62,7 @@ void insert_end_linked_list(struct node **l, int data);
  * @param data The data to be inserted.
  * @return void
  */
-void insert_begin_double_linked_list(struct node **l, int data);
+void insert_begin_double_linked_list(struct list **l, int data);
 
 /**
  * @brief Inserts a new element at the middle of the double linked list.
@@ -70,7 +70,7 @@ void insert_begin_double_linked_list(struct node **l, int data);
  * @param data The data to be inserted.
  * @return void
  */
-void insert_middle_double_linked_list(struct node **l, int data);
+void insert_middle_double_linked_list(struct list **l, int data);
 
 /**
  * @brief Inserts a new element at the end of the double linked list.
@@ -78,6 +78,6 @@ void insert_middle_double_linked_list(struct node **l, int data);
  * @param data The data to be inserted.
  * @return void
  */
-void insert_end_double_linked_list(struct node **l, int data);
+void insert_end_double_linked_list(struct list **l, int data);
 
 #endif // end of the header guard

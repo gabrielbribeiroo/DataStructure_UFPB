@@ -1,0 +1,54 @@
+#ifndef DELETE_H // checks if the header has already been included
+#define DELETE_H // if not, define the header
+
+/**
+ * @brief Deletes the first element of the vector.
+ * @param l A pointer to the vector.
+ * @return void 
+ */
+void delete_begin_vector(struct vector *l);
+
+/**
+ * @brief Deletes the middle element of the vector.
+ * @param l A pointer to the vector.
+ * @return void 
+ */
+void delete_middle_vector(struct vector *l);
+
+/**
+ * @brief Deletes the last element of the vector.
+ * @param l A pointer to the vector.
+ * @return void 
+ */
+void delete_end_vector(struct vector *l);
+
+/**
+ * @brief Deletes the first element of the linked list.
+ * @param l A pointer to the head of the linked list.
+ * @return void 
+ */
+void delete_begin_linked_list(struct node **l);
+
+/**
+ * @brief Deletes the middle element of the linked list.
+ * @param l A pointer to the head of the linked list.
+ * @return void 
+ */
+void delete_middle_linked_list(struct node **l);
+
+/**
+ * @brief Deletes the last element of the linked list.
+ * @param l A pointer to the head of the linked list.
+ * @return void 
+ */
+void delete_end_linked_list(struct node **l);
+
+/**
+ * @brief Deletes the first element of the double linked list.
+ * @param l A pointer to the head of the double linked list.
+ * @return void 
+ */
+void delete_begin_double_linked_list(struct double_node **l);
+
+
+#endif // end of the header guard

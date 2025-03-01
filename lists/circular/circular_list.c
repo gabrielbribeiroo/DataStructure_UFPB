@@ -16,5 +16,174 @@
 
 // main function
 int main() {
+    menu();
+    printf("\nOption: ");
+    int option, opt;
+    scanf("%d", &option);
+
+    do {
+        switch (option) {
+            case 1:
+                display_menu_vector_list();
+                struct vector *l;
+                create_vector_list(l);
+                printf("\nOption: ");
+                scanf("%d", &opt);
+                switch (opt) {
+                    case 1:
+                        int data;
+                        printf("Data: ");
+                        scanf("%d", &data);
+                        insert_end_vector(l, data);
+                        break;
+                    case 2:
+                        int data;
+                        printf("Data: ");
+                        scanf("%d", &data);
+                        insert_begin_vector(l, data);
+                        break;
+                    case 3:
+                        delete_end_vector(l);
+                        break;
+                    case 4:
+                        delete_begin_vector(l);
+                        break;
+                    case 5:
+                        int data;
+                        printf("Data: ");
+                        scanf("%d", &data);
+                        search_vector_list(l, data);
+                        break;
+                    case 6:
+                        print_vector_list(l);
+                        break;
+                    case 7:
+                        clean_vector_list(l);
+                        break;
+                    case 8:
+                        printf("Exiting...");
+                        break;
+                    default:
+                        printf("Invalid option");
+                        break;
+                }
+                break;
+
+            case 2:
+                display_menu_linked_list();
+                struct node *l;
+                create_linked_list(l);
+                printf("\nOption: ");
+                scanf("%d", &opt);
+                switch (opt) {
+                    case 1:
+                        int data;
+                        printf("Data: ");
+                        scanf("%d", &data);
+                        insert_begin_linked_list(l, data);
+                        break;
+                    case 2:
+                        int data;
+                        printf("Data: ");
+                        scanf("%d", &data);
+                        insert_middle_linked_list(l, data);
+                        break;
+                    case 3:
+                        int data;
+                        printf("Data: ");
+                        scanf("%d", &data);
+                        insert_end_linked_list(l, data);
+                        break;
+                    case 4:
+                        delete_begin_linked_list(l);
+                        break;
+                    case 5:
+                        delete_middle_linked_list(l);
+                        break;
+                    case 6:
+                        delete_end_linked_list(l);
+                        break;
+                    case 7:
+                        clean_linked_list(l);
+                        break;
+                    case 8:
+                        print_linked_list(l);
+                        break;
+                    case 9:
+                        search_linked_list(l);
+                        break;
+                    case 10:
+                        printf("Exiting...");
+                        break;
+                    default:
+                        printf("Invalid option");
+                        break;
+                }
+                break;
+            case 3:
+                display_menu_double_linked_list();
+                printf("\nOption: ");
+                scanf("%d", &opt);
+                struct list *l;
+                struct dnode *p;
+                create_double_linked_list(l);
+                create_double_linked_node(p);
+                switch (opt) {
+                    case 1:
+                        int data;
+                        printf("Data: ");
+                        scanf("%d", &data);
+                        insert_begin_double_linked_list(l, data);
+                        break;
+                    case 2:
+                        int data;
+                        printf("Data: ");
+                        scanf("%d", &data);
+                        insert_middle_double_linked_list(l, data);
+                        break;
+                    case 3:
+                        int data;
+                        printf("Data: ");
+                        scanf("%d", &data);
+                        insert_end_double_linked_list(l, data);
+                        break;
+                    case 4:
+                        delete_begin_double_linked_list(l);
+                        break;
+                    case 5:
+                        delete_middle_double_linked_list(l);
+                        break;
+                    case 6:
+                        delete_end_double_linked_list(l);
+                        break;
+                    case 7:
+                        clean_double_linked_list(l);
+                        break;
+                    case 8:
+                        print1_double_linked_list(l);
+                        break;
+                    case 9:
+                        print2_double_linked_list(l);
+                        break;
+                    case 10:
+                        search_double_linked_list(l);
+                        break;
+                    case 11:
+                        printf("Exiting...");
+                        break;
+                    default:
+                        printf("Invalid option");
+                        break;
+                }
+                break;
+            case 4:
+                printf("Exiting...");
+                break;
+            default:
+                printf("Invalid option");
+                break;
+        }
+    } while (option != 4);
+
     return 0;
 }

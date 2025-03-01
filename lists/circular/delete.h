@@ -1,6 +1,8 @@
 #ifndef DELETE_H // checks if the header has already been included
 #define DELETE_H // if not, define the header
 
+#include "create.h" // for vector, linked list and double linked list
+
 /**
  * @brief Deletes the first element of the vector.
  * @param l A pointer to the vector.

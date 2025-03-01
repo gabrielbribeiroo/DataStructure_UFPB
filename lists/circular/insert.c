@@ -3,15 +3,19 @@
  * @brief This file implements the insertion functions for the circular list.
  * 
  * @author Gabriel Ribeiro
- * @version 1.0
- * @date 2025-02-26
+ * @version 2.0
+ * @date 2025-03-01
  */
 
 #include "insert.h" // include the header file with the function prototypes
 
+int data;
+
 // circular list by vector
 // inserts a new element at the beginning of the vector
-void insert_begin_vector(struct vector *l, int data) {
+void insert_begin_vector(struct vector *l) {
+    printf("Data: ");
+    scanf("%d", &data);
     if (vector_full(*l)) { // if the list is full
         printf("The list is full.\n"); // prints a message
         return; // returns
@@ -22,7 +26,9 @@ void insert_begin_vector(struct vector *l, int data) {
 }
 
 // inserts a new element at the middle of the vector
-void insert_middle_vector(struct vector *l, int data) {
+void insert_middle_vector(struct vector *l) {
+    printf("Data: ");
+    scanf("%d", &data);
     if (vector_full(*l)) { // if the list is full
         printf("The list is full.\n"); // prints a message
         return; // returns
@@ -40,7 +46,9 @@ void insert_middle_vector(struct vector *l, int data) {
 }
 
 // inserts a new element at the end of the vector
-void insert_end_vector(struct vector *l, int data) {
+void insert_end_vector(struct vector *l) {
+    printf("Data: ");
+    scanf("%d", &data);
     if (vector_full(*l)) { // if the list is full
         printf("The list is full.\n"); // prints a message
         return; // returns
@@ -53,7 +61,9 @@ void insert_end_vector(struct vector *l, int data) {
 
 // circular list by linked list
 // inserts a new element at the beginning of the linked list
-void insert_begin_linked_list(struct node **l, int data) {
+void insert_begin_linked_list(struct node **l) {
+    printf("Data: ");
+    scanf("%d", &data);
     struct node *new_node; // creates a new node
     new_node = (struct node*)malloc(sizeof(struct node)); // allocates memory for the new node
     new_node->data = data; // inserts the data
@@ -73,7 +83,9 @@ void insert_begin_linked_list(struct node **l, int data) {
 }
 
 // inserts a new element at the middle of the linked list
-void insert_middle_linked_list(struct node **l, int data) {
+void insert_middle_linked_list(struct node **l) {
+    printf("Data: ");
+    scanf("%d", &data);
     struct node *new_node; // creates a new node
     new_node = (struct node*)malloc(sizeof(struct node)); // allocates memory for the new node
     new_node->data = data; // inserts the data
@@ -94,7 +106,9 @@ void insert_middle_linked_list(struct node **l, int data) {
 }
 
 // inserts a new element at the end of the linked list
-void insert_end_linked_list(struct node **l, int data) {
+void insert_end_linked_list(struct node **l) {
+    printf("Data: ");
+    scanf("%d", &data);
     struct node *new_node; // creates a new node
     new_node = (struct node*)malloc(sizeof(struct node)); // allocates memory for the new node
     new_node->data = data; // inserts the data
@@ -115,7 +129,9 @@ void insert_end_linked_list(struct node **l, int data) {
 
 // circular list by double linked list
 // inserts a new element at the beginning of the double linked list
-void insert_begin_double_linked_list(struct list **l, int data) {
+void insert_begin_double_linked_list(struct list **l) {
+    printf("Data: ");
+    scanf("%d", &data);
     struct dnode *new_node; // creates a new node
     create_double_linked_node(&new_node); // creates a new node
     new_node->data = data; // inserts the data
@@ -135,7 +151,9 @@ void insert_begin_double_linked_list(struct list **l, int data) {
 }
 
 // inserts a new element at the middle of the double linked list
-void insert_middle_double_linked_list(struct list **l, int data) {
+void insert_middle_double_linked_list(struct list **l) {
+    printf("Data: ");
+    scanf("%d", &data);
     struct dnode *new_node; // creates a new node
     create_double_linked_node(&new_node); // creates a new node
     new_node->data = data; // inserts the data
@@ -160,7 +178,9 @@ void insert_middle_double_linked_list(struct list **l, int data) {
 }
 
 // inserts a new element at the end of the double linked list
-void insert_end_double_linked_list(struct list **l, int data) {
+void insert_end_double_linked_list(struct list **l) {
+    printf("Data: ");
+    scanf("%d", &data);
     struct dnode *new_node; // creates a new node
     create_double_linked_node(&new_node); // creates a new node
     new_node->data = data; // inserts the data

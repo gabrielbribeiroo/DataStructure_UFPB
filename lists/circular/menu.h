@@ -9,6 +9,13 @@
 
 #include "create.h"
 
+void menu() {
+    printf("\n1. List with vectors");
+    printf("\n2. List with linked list");
+    printf("\n3. List with double linked list");
+    printf("\n4. Exit");
+}
+
 void display_menu_vector_list() {
     printf("1. Insert at the end\n");
     printf("2. Insert at the beginning\n");

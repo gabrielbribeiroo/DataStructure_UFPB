@@ -47,14 +47,7 @@ void search_linked_list(struct node**);
  * @param list A double pointer to the head of the linked list.
  * @return void
  */
-void print1_linked_list(struct node**);
-
-/**
- * @brief Print all elements in the list from the end to the beginning.
- * @param list A double pointer to the head of the linked list.
- * @return void
- */
-void print2_linked_list(struct node**);
+void print_linked_list(struct node**);
 
 
 // function prototypes for double linked list

@@ -14,10 +14,9 @@ void clean_vector_list(struct vector*);
 /**
  * @brief Search for an element in the list.
  * @param vector A pointer to the vector list.
- * @param element The element to search for.
  * @return int The index of the element if found, otherwise -1.
  */
-int search_vector_list(struct vector*, int);
+int search_vector_list(struct vector*);
 
 /**
  * @brief Print all elements in the list.

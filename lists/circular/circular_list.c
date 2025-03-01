@@ -3,7 +3,7 @@
  * @brief Implementation of circular linked list.
  * 
  * @author Gabriel Ribeiro
- * @version 2.0
+ * @version 2.1
  * @date 2025-03-01 
  */
 
@@ -43,10 +43,7 @@ int main() {
                         delete_begin_vector(l);
                         break;
                     case 5:
-                        int data;
-                        printf("Data: ");
-                        scanf("%d", &data);
-                        search_vector_list(l, data);
+                        search_vector_list(l);
                         break;
                     case 6:
                         print_vector_list(l);

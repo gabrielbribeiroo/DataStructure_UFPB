@@ -3,7 +3,7 @@
  * @brief Circular linked list route implementation
  * 
  * @author Gabriel Ribeiro
- * @version 1.0
+ * @version 2.0
  * @date 2025-03-01
  */
 
@@ -18,7 +18,11 @@ void clean_vector_list(struct vector *l) {
 }
 
 // search for an element in the list
-void search_vector_list(struct vector *l, int d) {
+void search_vector_list(struct vector *l) {
+    int d;
+    printf("Data: ");
+    scanf("%d", &d);
+
     int i;
     for (i = 0; i < l->size; i++) {
         if (l->data[i] == d) {
@@ -55,7 +59,11 @@ void clean_linked_list(struct node **l) {
 }
 
 // search for an element in the list
-void search_linked_list(struct node **l, int d) {
+void search_linked_list(struct node **l) {
+    int d;
+    printf("Data: ");
+    scanf("%d", &d);
+
     struct node *aux;
     aux = (*l)->next; // start from the beginning of the list
 
@@ -102,7 +110,11 @@ void clean_double_linked_list(struct list **l) {
 }
 
 // search for an element in the list
-void search_double_linked_list(struct list **l, int d) {
+void search_double_linked_list(struct list **l) {
+    int d;
+    printf("Data: ");
+    scanf("%d", &d);
+
     struct dnode *aux;
     aux = (*l)->begin; // start from the beginning of the list
 

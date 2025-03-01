@@ -103,9 +103,9 @@ struct list {
  * @brief Initializes the linked list to be empty.
  * 
  * @param l A double pointer to the head of the linked list.
- * @return void
+ * @return char
  */
-void create_double_linked_list(struct list **l);
+char create_double_linked_list(struct list **l);
 
 /**
  * @brief Creates a new node in the linked list.

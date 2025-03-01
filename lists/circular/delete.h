@@ -48,7 +48,20 @@ void delete_end_linked_list(struct node **l);
  * @param l A pointer to the head of the double linked list.
  * @return void 
  */
-void delete_begin_double_linked_list(struct double_node **l);
+void delete_begin_double_linked_list(struct list **l);
 
+/**
+ * @brief Deletes the middle element of the double linked list.
+ * @param l A pointer to the head of the double linked list.
+ * @return void 
+ */
+void delete_middle_double_linked_list(struct list **l);
+
+/**
+ * @brief Deletes the last element of the double linked list.
+ * @param l A pointer to the head of the double linked list.
+ * @return void 
+ */
+void delete_end_double_linked_list(struct list **l);
 
 #endif // end of the header guard

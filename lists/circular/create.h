@@ -103,9 +103,9 @@ struct list {
  * @brief Initializes the linked list to be empty.
  * 
  * @param l A double pointer to the head of the linked list.
- * @return char
+ * @return void
  */
-char create_double_linked_list(struct list **l);
+void create_double_linked_list(struct list **l);
 
 /**
  * @brief Creates a new node in the linked list.
@@ -121,6 +121,6 @@ void create_double_linked_node(struct dnode **n);
  * @param l A pointer to the head of the linked list.
  * @return char 1 if the list is empty, 0 otherwise.
  */
-char double_linked_list_empty(struct list *l);
+char double_linked_list_empty(struct list **l);
 
 #endif // end of the header guard

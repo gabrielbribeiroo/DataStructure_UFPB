@@ -3,7 +3,7 @@
  * @brief This file implements the deletion functions for the stack.
  * 
  * @author Gabriel Ribeiro
- * @version 1.0
+ * @version 1.1
  * @date 2025-03-10
  */
 
@@ -11,7 +11,7 @@
 
 // list by vector
 // deletes the last element of the vector
-void delete_end_vector(struct vector *l) {
+void pop_vector(struct vector *l) {
     if (vector_empty(*l)) { // if the list is empty
         printf("The list is empty.\n"); // prints a message
         return; // returns

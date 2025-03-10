@@ -12,7 +12,7 @@
 void clean_vector_list(struct vector*);
 
 /**
- * @brief Search for an element in the list.
+ * @brief Search for the top element of the stack.
  * @param vector A pointer to the vector list.
  * @return void The index of the element if found, otherwise -1.
  */

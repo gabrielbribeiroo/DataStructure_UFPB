@@ -3,8 +3,8 @@
  * @brief Stack route implementation
  * 
  * @author Gabriel Ribeiro
- * @version 1.0
- * @date 2025-03-10
+ * @version 1.1
+ * @date 2025-03-11
  */
 
 #include "route.h" // for list
@@ -28,7 +28,7 @@ void print_vector_list(struct vector *l) {
     }
     else {
         print_vector_list(&l);
-        printf(l->data[l->ctr - 1]);
+        printf("%d ", l->data[l->ctr - 1]);
     }
 }
 

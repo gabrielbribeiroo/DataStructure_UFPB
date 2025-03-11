@@ -20,25 +20,25 @@ int main() {
 
     switch (opt1) {
         case 1: {
-            struct vector_list *l; 
-            create_vector_list(&l);
+            struct vector *l; 
+            create_vector_list(l);
             display_menu_vector_list();
             scanf("%d", &opt2);
             switch (opt2) {
                 case 1:
-                    push_vector(&l);
+                    push_vector(l);
                     break;
                 case 2:
-                    pop_vector(&l);
+                    pop_vector(l);
                     break;
                 case 3:
-                    search_vector_list(&l);
+                    search_vector_list(l);
                     break;
                 case 4:
-                    print_vector_list(&l);
+                    print_vector_list(l);
                     break;
                 case 5:
-                    clean_vector_list(&l);
+                    clean_vector_list(l);
                     break;
                 case 6:
                     exit(0);
@@ -68,7 +68,7 @@ int main() {
                     print_linked_list(l);
                     break;
                 case 5:
-                    clean_linked_list(&l);
+                    clean_linked_list(l);
                     break;
                 case 6:
                     exit(0);

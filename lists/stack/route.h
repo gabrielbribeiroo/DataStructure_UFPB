@@ -43,7 +43,7 @@ void search_linked_list(struct node**);
 
 /**
  * @brief Print all elements in the list from the beginning to the end.
- * @param list A double pointer to the head of the linked list.
+ * @param list A pointer to the head of the linked list.
  * @return void
  */
 void print_linked_list(struct node*);

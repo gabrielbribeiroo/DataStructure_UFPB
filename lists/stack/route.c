@@ -27,8 +27,9 @@ void print_vector_list(struct vector *l) {
         return;
     }
     else {
-        printf("%d ", l->data[l->ctr]);
+        l->ctr--;
         print_vector_list(l);
+        printf("%d ", l->data[l->ctr]);
     }
 }
 
@@ -57,13 +58,13 @@ void search_linked_list(struct node **l) {
     }
 }
 
-// print all elements in the list from the beginning to the end
+// Print all elements in the linked list from the beginning to the end
 void print_linked_list(struct node *l) {
     if (l == NULL) {
-        printf("\n");
+        printf("\n"); // Nova linha ao final da impressão
         return;
     }
 
-    printf("%d ", l->data);
-    print_linked_list(l->next);
+    printf("%d ", l->data);  // Imprime o dado do nó atual
+    print_linked_list(l->next);  // Chama recursivamente para o próximo nó
 }

@@ -3,7 +3,7 @@
  * @brief Menu display function to interact with the user
  * 
  * @author Gabriel Ribeiro
- * @version 1.1
+ * @version 1.2
  * @date 2025-03-11
  */
 
@@ -13,6 +13,7 @@ void menu() {
     printf("\n1. List with vectors");
     printf("\n2. List with linked list");
     printf("\n3. Exit");
+    printf("\nOption: ");
 }
 
 void display_menu_vector_list() {

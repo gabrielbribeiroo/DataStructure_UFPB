@@ -15,76 +15,84 @@
 
 int main() {
     int opt1, opt2;
-    menu();
-    scanf("%d", &opt1);
 
-    switch (opt1) {
-        case 1: {
-            struct vector *l; 
+    while (1) {
+        menu();
+        scanf("%d", &opt1);
+
+        if (opt1 == 1) {  // Vector List
+            struct vector *l;
             create_vector_list(l);
-            display_menu_vector_list();
-            scanf("%d", &opt2);
-            switch (opt2) {
-                case 1:
-                    push_vector(l);
-                    break;
-                case 2:
-                    pop_vector(l);
-                    break;
-                case 3:
-                    search_vector_list(l);
-                    break;
-                case 4:
-                    print_vector_list(l);
-                    break;
-                case 5:
-                    clean_vector_list(l);
-                    break;
-                case 6:
-                    exit(0);
-                    break;
-                default:
-                    printf("Invalid option\n");
-                    break;
-            }
-            break;
-        }
-        case 2: {
-            struct node **l;
+
+            do {
+                display_menu_vector_list();
+                scanf("%d", &opt2);
+
+                switch (opt2) {
+                    case 1:
+                        push_vector(l);
+                        break;
+                    case 2:
+                        pop_vector(l);
+                        break;
+                    case 3:
+                        search_vector_list(l);
+                        break;
+                    case 4:
+                        print_vector_list(l);
+                        break;
+                    case 5:
+                        clean_vector_list(l);
+                        break;
+                    case 6:
+                        printf("Exiting vector list menu...\n");
+                        break;
+                    default:
+                        printf("Invalid option\n");
+                        break;
+                }
+            } while (opt2 != 6);
+        } 
+        else if (opt1 == 2) {  // Linked List
+            struct node **l; 
             create_linked_list(l);
-            display_menu_linked_list();
-            scanf("%d", &opt2);
-            switch (opt2) {
-                case 1:
-                    push_linked_list(l);
-                    break;
-                case 2:
-                    pop_linked_list(l);
-                    break;
-                case 3:
-                    search_linked_list(l);
-                    break;
-                case 4:
-                    print_linked_list(l);
-                    break;
-                case 5:
-                    clean_linked_list(l);
-                    break;
-                case 6:
-                    exit(0);
-                    break;
-                default:
-                    printf("Invalid option\n");
-                    break;
-            }
+
+            do {
+                display_menu_linked_list();
+                scanf("%d", &opt2);
+
+                switch (opt2) {
+                    case 1:
+                        push_linked_list(l);
+                        break;
+                    case 2:
+                        pop_linked_list(l);
+                        break;
+                    case 3:
+                        search_linked_list(l);
+                        break;
+                    case 4:
+                        print_linked_list(l);
+                        break;
+                    case 5:
+                        clean_linked_list(l);
+                        break;
+                    case 6:
+                        printf("Exiting linked list menu...\n");
+                        break;
+                    default:
+                        printf("Invalid option\n");
+                        break;
+                }
+            } while (opt2 != 6);
+        } 
+        else if (opt1 == 3) {
+            printf("Exiting program...\n");
             break;
-        }
-        case 3:
-            exit(0);
-            break;
-        default:
+        } 
+        else {
             printf("Invalid option\n");
-            break;
+        }
     }
 
     return 0;

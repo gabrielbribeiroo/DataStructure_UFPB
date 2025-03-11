@@ -30,17 +30,17 @@ void create_vector_list(struct vector *l);
  * @brief Checks if the list is full.
  * 
  * @param l The vector.
- * @return char 1 if the list is full, 0 otherwise.
+ * @return int 1 if the list is full, 0 otherwise.
  */
-char vector_full(struct vector l);
+int vector_full(struct vector l);
 
 /**
  * @brief Checks if the list is empty.
  * 
  * @param l The vector.
- * @return char 1 if the list is empty, 0 otherwise.
+ * @return int 1 if the list is empty, 0 otherwise.
  */
-char vector_empty(struct vector l);
+int vector_empty(struct vector l);
 
 
 // list by linked list
@@ -67,8 +67,8 @@ void create_linked_list(struct node **l);
  * @brief Checks if the linked list is empty.
  * 
  * @param l A pointer to the head of the linked list.
- * @return char 1 if the list is empty, 0 otherwise.
+ * @return int 1 if the list is empty, 0 otherwise.
  */
-char linked_list_empty(struct node *l);
+int linked_list_empty(struct node *l);
 
 #endif // end of the header guard

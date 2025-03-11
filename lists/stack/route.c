@@ -22,17 +22,12 @@ void search_vector_list(struct vector *l) {
 
 // print all elements in the list
 void print_vector_list(struct vector *l) {
-    if (l->ctr == 0) {
-        printf("Empty list.\n");
-        return;
-    }
-    else {
-        l->ctr--;
-        print_vector_list(l);
-        printf("%d ", l->data[l->ctr]);
-    }
+    printf("\nList: ");
+    for (int i = 0; i <= l->ctr; i++) {
+		printf("%d ", l->data[i]);
+	} 
+	printf("\n");
 }
-
 
 // list by linked list
 // clean the stack
@@ -60,11 +55,11 @@ void search_linked_list(struct node **l) {
 
 // Print all elements in the linked list from the beginning to the end
 void print_linked_list(struct node *l) {
-    if (l == NULL) {
-        printf("\n"); // Nova linha ao final da impressão
-        return;
+    struct node *aux = l;
+    printf("\nList: ");
+    while (linked_list_empty(aux) == '1') {
+        printf("%d ", aux->data); // print data of each node
+        aux = aux->next;
     }
-
-    printf("%d ", l->data);  // Imprime o dado do nó atual
-    print_linked_list(l->next);  // Chama recursivamente para o próximo nó
+    printf("\n");
 }

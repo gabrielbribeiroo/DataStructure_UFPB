@@ -3,8 +3,8 @@
  * @brief Implementation of the function to create a stack.
  * 
  * @author Gabriel Ribeiro
- * @version 1.0
- * @date 2025-03-10
+ * @version 1.1
+ * @date 2025-03-11
  */
 
 #include "create.h" // include the header file with the function prototypes
@@ -16,12 +16,12 @@ void create_vector_list(struct vector *l) {
 }
 
 // checks if the list is full
-char vector_full(struct vector l) {
+int vector_full(struct vector l) {
     return (l.ctr == SIZE); // returns 1 if the control is equal to SIZE
 }
 
 // checks if the list is empty
-char vector_empty(struct vector l) {
+int vector_empty(struct vector l) {
     return (l.ctr == 0); // returns 1 if the control is 0
 }
 
@@ -33,6 +33,6 @@ void create_linked_list(struct node **l) {
 }
 
 // checks if the linked list is empty
-char linked_list_empty(struct node *l) {
+int linked_list_empty(struct node *l) {
     return (l == NULL); // returns 1 if the head pointer is NULL
 }

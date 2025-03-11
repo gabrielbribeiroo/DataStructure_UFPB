@@ -3,7 +3,7 @@
  * @brief Implementation of stack.
  * 
  * @author Gabriel Ribeiro
- * @version 2.0
+ * @version 3.0
  * @date 2025-03-11 
  */
 
@@ -16,11 +16,11 @@
 int main() {
     int opt1, opt2;
 
-    while (1) { // Loop principal
+    while (1) {
         menu();
         scanf("%d", &opt1);
 
-        if (opt1 == 1) {  // Vector List
+        if (opt1 == 1) { 
             struct vector *l = malloc(sizeof(struct vector));
             if (l == NULL) {
                 printf("Memory allocation failed!\n");
@@ -61,7 +61,12 @@ int main() {
             free(l);
         } 
         else if (opt1 == 2) { 
-            struct node *l;  
+            struct node *l = malloc(sizeof(struct node));  
+            if (l == NULL) {
+                printf("Memory allocation failed!\n");
+                return 1;
+            }
+
             create_linked_list(&l); 
 
             do {
@@ -93,7 +98,7 @@ int main() {
                 }
             } while (opt2 != 6);
         } 
-        else if (opt1 == 3) { // Sai do programa
+        else if (opt1 == 3) { 
             printf("Exiting program...\n");
             break;
         } 

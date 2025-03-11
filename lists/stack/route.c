@@ -3,7 +3,7 @@
  * @brief Stack route implementation
  * 
  * @author Gabriel Ribeiro
- * @version 1.2
+ * @version 2.0
  * @date 2025-03-11
  */
 
@@ -53,13 +53,14 @@ void search_linked_list(struct node **l) {
     }
 }
 
-// Print all elements in the linked list from the beginning to the end
+// print all elements in the linked list from the beginning to the end
 void print_linked_list(struct node *l) {
-    struct node *aux = l;
-    printf("\nList: ");
-    while (linked_list_empty(aux) == '1') {
-        printf("%d ", aux->data); // print data of each node
-        aux = aux->next;
+    if (l == NULL) {
+        printf("\n");
+        return;
     }
-    printf("\n");
+
+    printf("%d ", l->data);
+
+    print_linked_list(l->next);
 }

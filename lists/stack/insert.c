@@ -3,7 +3,7 @@
  * @brief This file implements the insertion functions for the stack.
  * 
  * @author Gabriel Ribeiro
- * @version 1.1
+ * @version 2.0
  * @date 2025-03-10
  */
 
@@ -30,20 +30,8 @@ void push_linked_list(struct node **l) {
     int data;
     printf("Data: ");
     scanf("%d", &data);
-    struct node *new_node; // creates a new node
-    new_node = (struct node*)malloc(sizeof(struct node)); // allocates memory for the new node
-    new_node->data = data; // inserts the data
-    if (linked_list_empty(*l)) { // if the list is empty
-        new_node->next = new_node; // points to itself
-        *l = new_node; // sets the head pointer to the new node
-    } 
-    else { // if the list is not empty
-        struct node *last = *l; // creates a pointer to the last node
-        while (last->next != *l) { // iterates over the list
-            last = last->next; // moves to the next node
-        }
-        new_node->next = *l; // points to the head
-        last->next = new_node; // inserts the new node
-        *l = new_node; // sets the head pointer to the new node
-    }
+    struct node *new_node = (struct node*)malloc(sizeof(struct node)); // Allocates memory for the new node
+    new_node->data = data; // Inserts the data
+    new_node->next = *l; // Points to the previous head (or NULL if the list is empty)
+    *l = new_node; // Sets the head pointer to the new node
 }

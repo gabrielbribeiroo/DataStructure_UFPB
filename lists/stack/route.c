@@ -27,7 +27,7 @@ void print_vector_list(struct vector *l) {
         return;
     }
     else {
-        print_vector_list(&l);
+        print_vector_list(l);
         printf("%d ", l->data[l->ctr - 1]);
     }
 }

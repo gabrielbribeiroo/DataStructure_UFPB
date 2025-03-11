@@ -3,8 +3,8 @@
  * @brief Implementation of stack.
  * 
  * @author Gabriel Ribeiro
- * @version 1.0
- * @date 2025-03-10 
+ * @version 2.0
+ * @date 2025-03-11 
  */
 
 #include "create.h" 

@@ -3,7 +3,7 @@
  * @brief Stack route implementation
  * 
  * @author Gabriel Ribeiro
- * @version 1.1
+ * @version 1.2
  * @date 2025-03-11
  */
 
@@ -22,13 +22,13 @@ void search_vector_list(struct vector *l) {
 
 // print all elements in the list
 void print_vector_list(struct vector *l) {
-    if (!l->ctr) {
+    if (l->ctr == 0) {
         printf("Empty list.\n");
         return;
     }
     else {
+        printf("%d ", l->data[l->ctr]);
         print_vector_list(l);
-        printf("%d ", l->data[l->ctr - 1]);
     }
 }
 
@@ -58,13 +58,12 @@ void search_linked_list(struct node **l) {
 }
 
 // print all elements in the list from the beginning to the end
-void print_linked_list(struct node **l) {
-    if ((*l)->next == *l) {
-        printf("Empty list.\n");
+void print_linked_list(struct node *l) {
+    if (l == NULL) {
+        printf("\n");
         return;
     }
-    else {
-        print_linked_list(&(*l)->next);
-        printf("%d ", (*l)->data);
-    }
+
+    printf("%d ", l->data);
+    print_linked_list(l->next);
 }

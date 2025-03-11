@@ -16,12 +16,17 @@
 int main() {
     int opt1, opt2;
 
-    while (1) {
+    while (1) { // Loop principal
         menu();
         scanf("%d", &opt1);
 
         if (opt1 == 1) {  // Vector List
-            struct vector *l;
+            struct vector *l = malloc(sizeof(struct vector));
+            if (l == NULL) {
+                printf("Memory allocation failed!\n");
+                return 1;
+            }
+
             create_vector_list(l);
 
             do {
@@ -52,10 +57,12 @@ int main() {
                         break;
                 }
             } while (opt2 != 6);
+
+            free(l);
         } 
-        else if (opt1 == 2) {  // Linked List
-            struct node **l; 
-            create_linked_list(l);
+        else if (opt1 == 2) { 
+            struct node *l = NULL;  
+            create_linked_list(&l); 
 
             do {
                 display_menu_linked_list();
@@ -63,19 +70,20 @@ int main() {
 
                 switch (opt2) {
                     case 1:
-                        push_linked_list(l);
+                        push_linked_list(&l);
                         break;
                     case 2:
-                        pop_linked_list(l);
+                        pop_linked_list(&l);
                         break;
                     case 3:
-                        search_linked_list(l);
+                        search_linked_list(&l);
                         break;
                     case 4:
                         print_linked_list(l);
                         break;
                     case 5:
-                        clean_linked_list(l);
+                        clean_linked_list(&l);
+                        l = NULL; // Define como NULL após limpar
                         break;
                     case 6:
                         printf("Exiting linked list menu...\n");
@@ -86,7 +94,7 @@ int main() {
                 }
             } while (opt2 != 6);
         } 
-        else if (opt1 == 3) {
+        else if (opt1 == 3) { // Sai do programa
             printf("Exiting program...\n");
             break;
         } 

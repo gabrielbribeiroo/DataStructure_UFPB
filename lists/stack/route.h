@@ -46,6 +46,6 @@ void search_linked_list(struct node**);
  * @param list A double pointer to the head of the linked list.
  * @return void
  */
-void print_linked_list(struct node**);
+void print_linked_list(struct node*);
 
 #endif // end of the header guard

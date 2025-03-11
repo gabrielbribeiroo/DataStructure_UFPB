@@ -22,8 +22,8 @@ void search_vector_list(struct vector *l) {
 
 // print all elements in the list
 void print_vector_list(struct vector *l) {
-    printf("\nList: ");
-    for (int i = 0; i <= l->ctr; i++) {
+    printf("List: ");
+    for (int i = 0; i < l->ctr; i++) {
 		printf("%d ", l->data[i]);
 	} 
 	printf("\n");

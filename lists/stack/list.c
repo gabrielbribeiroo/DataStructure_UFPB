@@ -61,7 +61,7 @@ int main() {
             free(l);
         } 
         else if (opt1 == 2) { 
-            struct node *l = NULL;  
+            struct node *l;  
             create_linked_list(&l); 
 
             do {
@@ -83,7 +83,6 @@ int main() {
                         break;
                     case 5:
                         clean_linked_list(&l);
-                        l = NULL; // Define como NULL após limpar
                         break;
                     case 6:
                         printf("Exiting linked list menu...\n");

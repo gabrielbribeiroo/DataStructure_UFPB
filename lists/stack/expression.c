@@ -66,14 +66,20 @@ int main() {
     char expression[MAX];
     printf("Enter the postfix expression: ");
     fgets(expression, MAX, stdin);
-    // Remove newline character from the end of the expression if present
+    // remove newline character from the end of the expression if present
     if (expression[strlen(expression) - 1] == '\n') {
         expression[strlen(expression) - 1] = '\0';
     }
     for (int i=0; i<strlen(expression); i++) {
+        // skip alphabets and numbers
+        if ((expression[i] >= 'a' && expression[i] <= 'z') || (expression[i] >= 'A' && expression[i] <= 'Z') || (expression[i] >= '0' && expression[i] <= '9')) {
+            continue;
+        }
+        // push the opening brackets to the stack
         if (expression[i] != '}' && expression[i] != ']' && expression[i] != ')') {
             push(l, expression[i]);
         } 
+        // pop the closing brackets from the stack
         else {
             char top = l->data[l->ctr-1];
             if (expression[i] == '}' && top == '{') {
@@ -90,6 +96,7 @@ int main() {
             }
         }
     }
+    // if the stack is empty, the expression is valid
     if (is_empty(l)) {
         printf("The expression is valid.\n");        
     }

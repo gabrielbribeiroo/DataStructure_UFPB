@@ -72,11 +72,11 @@ int main() {
     }
     for (int i=0; i<strlen(expression); i++) {
         // skip alphabets and numbers
-        if ((expression[i] >= 'a' && expression[i] <= 'z') || (expression[i] >= 'A' && expression[i] <= 'Z') || (expression[i] >= '0' && expression[i] <= '9')) {
+        if ((expression[i] >= 'a' && expression[i] <= 'z') || (expression[i] >= 'A' && expression[i] <= 'Z') || (expression[i] >= '0' && expression[i] <= '9') || expression[i] == ' ' || expression[i] == '.' || expression[i] == ',' || expression[i] == ';' || expression[i] == ':' || expression[i] == '?' || expression[i] == '!' || expression[i] == '-' || expression[i] == '+' || expression[i] == '*' || expression[i] == '/' || expression[i] == '%' || expression[i] == '^' || expression[i] == '&' || expression[i] == '|' || expression[i] == '<' || expression[i] == '>' || expression[i] == '=' || expression[i] == '~' || expression[i] == '`' || expression[i] == '@' || expression[i] == '#' || expression[i] == '$' || expression[i] == '%' || expression[i] == '^' || expression[i] == '&' || expression[i] == '*' || expression[i] == '<' || expression[i] == '>') {
             continue;
         }
         // push the opening brackets to the stack
-        if (expression[i] != '}' && expression[i] != ']' && expression[i] != ')') {
+        if (expression[i] == '{' || expression[i] == '[' || expression[i] == '(') {
             push(l, expression[i]);
         } 
         // pop the closing brackets from the stack

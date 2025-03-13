@@ -70,6 +70,7 @@ int main() {
     if (expression[strlen(expression) - 1] == '\n') {
         expression[strlen(expression) - 1] = '\0';
     }
+    // iterate through the expression
     for (int i=0; i<strlen(expression); i++) {
         // skip alphabets and numbers
         if ((expression[i] >= 'a' && expression[i] <= 'z') || (expression[i] >= 'A' && expression[i] <= 'Z') || (expression[i] >= '0' && expression[i] <= '9') || expression[i] == ' ' || expression[i] == '.' || expression[i] == ',' || expression[i] == ';' || expression[i] == ':' || expression[i] == '?' || expression[i] == '!' || expression[i] == '-' || expression[i] == '+' || expression[i] == '*' || expression[i] == '/' || expression[i] == '%' || expression[i] == '^' || expression[i] == '&' || expression[i] == '|' || expression[i] == '<' || expression[i] == '>' || expression[i] == '=' || expression[i] == '~' || expression[i] == '`' || expression[i] == '@' || expression[i] == '#' || expression[i] == '$' || expression[i] == '%' || expression[i] == '^' || expression[i] == '&' || expression[i] == '*' || expression[i] == '<' || expression[i] == '>') {

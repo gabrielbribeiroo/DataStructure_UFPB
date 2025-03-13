@@ -70,11 +70,20 @@ int main() {
     if (expression[strlen(expression) - 1] == '\n') {
         expression[strlen(expression) - 1] = '\0';
     }
+    // special characters
+    char vector[] = {' ', '.', ',', ';', ':', '?', '!', '-', '+', '*', '/', '%', '^', '&', '|', '<', '>', '=', '~', '`', '@', '#', '$', '_', '\\', '"', '\'', '\0'};
     // iterate through the expression
     for (int i=0; i<strlen(expression); i++) {
         // skip alphabets and numbers
-        if ((expression[i] >= 'a' && expression[i] <= 'z') || (expression[i] >= 'A' && expression[i] <= 'Z') || (expression[i] >= '0' && expression[i] <= '9') || expression[i] == ' ' || expression[i] == '.' || expression[i] == ',' || expression[i] == ';' || expression[i] == ':' || expression[i] == '?' || expression[i] == '!' || expression[i] == '-' || expression[i] == '+' || expression[i] == '*' || expression[i] == '/' || expression[i] == '%' || expression[i] == '^' || expression[i] == '&' || expression[i] == '|' || expression[i] == '<' || expression[i] == '>' || expression[i] == '=' || expression[i] == '~' || expression[i] == '`' || expression[i] == '@' || expression[i] == '#' || expression[i] == '$' || expression[i] == '%' || expression[i] == '^' || expression[i] == '&' || expression[i] == '*' || expression[i] == '<' || expression[i] == '>') {
+        if ((expression[i] >= 'a' && expression[i] <= 'z') || (expression[i] >= 'A' && expression[i] <= 'Z') || (expression[i] >= '0' && expression[i] <= '9')) {
             continue;
+        }
+        // skip special characters
+
+        for (int j=0; j<strlen(vector); j++) {
+            if (expression[i] == vector[j]) {
+                continue;
+            }
         }
         // push the opening brackets to the stack
         if (expression[i] == '{' || expression[i] == '[' || expression[i] == '(') {
@@ -82,6 +91,11 @@ int main() {
         } 
         // pop the closing brackets from the stack
         else {
+            if (is_empty(l)) {
+                printf("The expression is invalid.\n");
+                free(l);
+                return 0;
+            }
             char top = l->data[l->ctr-1];
             if (expression[i] == '}' && top == '{') {
                 pop(l);

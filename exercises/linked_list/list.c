@@ -4,7 +4,7 @@
  * 
  * @author Gabriel Ribeiro
  * @date 2025-03-15
- * @version 1.0
+ * @version 2.0
  */
 
 #include "list.h"
@@ -49,7 +49,7 @@ void insert_end(struct list *l) {
 
 // Removes a node from the end of the list
 void remove_end(struct list *l) {
-    if (l->next == NULL) {
+    if (is_empty(l)) {
         printf("List is empty\n");
         return;
     }
@@ -64,7 +64,7 @@ void remove_end(struct list *l) {
 
 // Displays the list
 void display(struct list *l) {
-    if (l->next == NULL) {
+    if (is_empty(l)) {
         printf("List is empty\n");
         return;
     }
@@ -74,4 +74,5 @@ void display(struct list *l) {
         printf("%d -> ", temp->data);
         temp = temp->next;
     }
+    printf("NULL\n");
 }

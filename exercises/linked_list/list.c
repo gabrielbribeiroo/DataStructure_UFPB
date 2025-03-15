@@ -39,12 +39,18 @@ void insert_end(struct list *l) {
     new_node->data = data;
     new_node->next = NULL;
 
-    // Traverse to the last node
-    struct list *temp = l;
-    while (temp->next != NULL) {
-        temp = temp->next;
+    if (is_empty(l)) {
+        l->next = new_node; // Insert the new node as the first node
+        return;
     }
-    temp->next = new_node; // Insert the new node at the end
+    else {
+        // Traverse to the last node
+        struct list *temp = l;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = new_node; // Insert the new node at the end
+    }
 }
 
 // Removes a node from the end of the list

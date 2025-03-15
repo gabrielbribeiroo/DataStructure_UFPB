@@ -37,10 +37,10 @@ void insert_end(struct list **l);
 
 /**
  * @brief Removes a node from the end of the list
- * @param l A pointer to the head of the linked list.
+ * @param l A double pointer to the head of the linked list.
  * @return void
  */
-void remove_end(struct list *l);
+void remove_end(struct list **l);
 
 /**
  * @brief Displays the list

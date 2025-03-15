@@ -4,7 +4,7 @@
  * 
  * @author Gabriel Ribeiro
  * @date 2025-03-15
- * @version 2.0
+ * @version 3.0
  */
 
 #include "list.h"
@@ -24,7 +24,7 @@ int is_empty(struct list *l) {
     return l->next == NULL;
 }
 
-// Inserts a node at the end of the list
+// Inserts a new node at the end of the list
 void insert_end(struct list **l) {
     int data;
     printf("Enter the data: ");
@@ -40,7 +40,7 @@ void insert_end(struct list **l) {
     new_node->data = data;
     new_node->next = NULL;
 
-    // If the list is empty, set the new node as the head
+    // If the list is empty, set the new node as the first element
     if (*l == NULL) {
         *l = new_node;
         return;
@@ -54,28 +54,40 @@ void insert_end(struct list **l) {
     temp->next = new_node; // Insert the new node at the end
 }
 
-// Removes a node from the end of the list
-void remove_end(struct list *l) {
-    if (is_empty(l)) {
+// Removes the last node from the list
+void remove_end(struct list **l) {
+    if (is_empty(*l)) {
         printf("List is empty\n");
         return;
     }
-    struct list *temp = l;
-    // Traverse to the second last node
-    while (temp->next->next != NULL) {
-        temp = temp->next;
+
+    struct list *aux = *l;
+    struct list *prev = NULL;
+
+    // Traverse to the last node
+    while (aux->next != NULL) {
+        prev = aux;
+        aux = aux->next;
     }
-    free(temp->next); // Free the last node
-    temp->next = NULL; // Set the next of second last node to NULL
+
+    // If the list has only one element
+    if (prev == NULL) {
+        free(aux);
+        *l = NULL;
+    } 
+    else {
+        prev->next = NULL;
+        free(aux);
+    }
 }
 
-// Displays the list
+// Displays the elements of the list
 void display(struct list *l) {
     if (is_empty(l)) {
         printf("List is empty\n");
         return;
     }
-    struct list *temp = l->next;
+    struct list *temp = l;  // Start from the first node, not l->next
     printf("List: ");
     while (temp != NULL) {
         printf("%d -> ", temp->data);

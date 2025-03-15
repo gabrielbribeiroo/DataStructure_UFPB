@@ -16,7 +16,7 @@ void create(struct list **l) {
         printf("Memory allocation failed\n");
         return;
     }
-    (*l)->next = NULL;
+    *l = NULL;
 }
 
 // Checks if the list is empty
@@ -25,7 +25,7 @@ int is_empty(struct list *l) {
 }
 
 // Inserts a node at the end of the list
-void insert_end(struct list *l) {
+void insert_end(struct list **l) {
     int data;
     printf("Enter the data: ");
     scanf("%d", &data);
@@ -35,22 +35,23 @@ void insert_end(struct list *l) {
         printf("Memory allocation failed\n");
         return;
     }
+
     // Initialize the new node
     new_node->data = data;
     new_node->next = NULL;
 
-    if (is_empty(l)) {
-        l->next = new_node; // Insert the new node as the first node
+    // If the list is empty, set the new node as the head
+    if (*l == NULL) {
+        *l = new_node;
         return;
     }
-    else {
-        // Traverse to the last node
-        struct list *temp = l;
-        while (temp->next != NULL) {
-            temp = temp->next;
-        }
-        temp->next = new_node; // Insert the new node at the end
+
+    // Traverse to the last node
+    struct list *temp = *l;
+    while (temp->next != NULL) {
+        temp = temp->next;
     }
+    temp->next = new_node; // Insert the new node at the end
 }
 
 // Removes a node from the end of the list

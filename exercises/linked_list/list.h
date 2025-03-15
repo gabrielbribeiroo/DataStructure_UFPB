@@ -30,10 +30,10 @@ int is_empty(struct list *l);
 
 /**
  * @brief Inserts a node at the end of the list
- * @param l A pointer to the head of the linked list.
+ * @param l A double pointer to the head of the linked list.
  * @return void
  */
-void insert_end(struct list *l);
+void insert_end(struct list **l);
 
 /**
  * @brief Removes a node from the end of the list

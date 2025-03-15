@@ -7,12 +7,17 @@ List concatenates(List* l1, List* l2);
 #include "list.h"
 
 struct list *concatenates(struct list *l1, struct list *l2) {
-    struct list *aux = l1->next; // creates an auxiliary pointer to the first list
-    while (aux->next != l1) {
+    if (is_empty(l1)) { // if the first list is empty
+        return l2; // returns the second list
+    }
+    if (is_empty(l2)) { // if the second list is empty
+        return l1; // returns the first list
+    }
+    struct list *aux = l1; // creates an auxiliary pointer to the first list
+    while (aux->next != NULL) {
         aux = aux->next; // goes to the last node of the first list
     }
-    aux->next = l2->next; // connects the last node of the first list to the first node of the second list
-    l2->next = l1; // connects the last node of the second list to the first node of the first list
+    aux->next = l2; // connects the last node of the first list to the first node of the second list
     return l1; // returns the concatenated list
 }
 
@@ -32,7 +37,7 @@ int main() {
 
         switch (choice) {
             case 1:
-                insert_end(l);
+                insert_end(&l);
                 break;
             case 2:
                 remove_end(l);
@@ -43,8 +48,8 @@ int main() {
             case 4: {
                 struct list *l2;
                 create(&l2);
-                insert_end(l2);
-                insert_end(l2);
+                insert_end(&l2);
+                insert_end(&l2);
                 concatenates(l, l2);
                 display(l);
                 break;

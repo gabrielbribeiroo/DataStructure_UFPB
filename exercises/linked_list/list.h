@@ -1,3 +1,6 @@
+#ifndef LIST_H // checks if the header has already been included
+#define LIST_H // if not, define the header
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -17,3 +20,5 @@ void remove_end(struct list *l) {}
 
 // Display the list
 void display(struct list *l) {}
+
+#endif // end of the header guard

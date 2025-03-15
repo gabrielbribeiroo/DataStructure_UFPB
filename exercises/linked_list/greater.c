@@ -8,7 +8,7 @@ int greater(List *l, int n);
 
 int greater(struct list *l, int n) {
     int count = 0;
-    struct list *node = l;
+    struct list *node = l->next;
     while (node != NULL) {
         if (node->data > n) {
             count++;
@@ -24,7 +24,7 @@ int main() {
 
     int choice;
     while (1) {
-        printf("1. Insert\n");
+        printf("\n1. Insert\n");
         printf("2. Remove\n");
         printf("3. Display\n");
         printf("4. Greater\n");

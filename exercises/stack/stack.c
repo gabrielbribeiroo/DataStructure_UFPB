@@ -59,13 +59,20 @@ float top(Stack *p) {
 
 // Pass all the elements of stack p2 to the top of stack p1
 void concatenate_stacks(Stack *p1, Stack *p2) {
-    Stack *temp = p2->next; // Create a temporary pointer to the top of the stack
-    while (temp != NULL) { // While there are nodes in the stack
-        stack_push(p1, temp->data); // Push the value of the node to the stack
-        temp = temp->next; // Move to the next node
+    Stack *temp = stack_create(); // Create a temporary stack to maintain the correct order
+
+    // Transfer elements from p2 to the temporary stack
+    while (!stack_empty(p2)) {
+        stack_push(temp, stack_pop(p2)); // Pop from p2 and push onto temp
     }
-    p2->next = NULL; // Set the next pointer of p2 to NULL
-    free(p2); // Free the memory of p2
+
+    // Now transfer elements from the temporary stack to p1
+    while (!stack_empty(temp)) {
+        stack_push(p1, stack_pop(temp)); // Pop from temp and push onto p1
+    }
+
+    stack_release(temp); // Free the memory of the temporary stack
+    stack_release(p2);   // Free the memory of p2 after copying its elements
 }
 
 // Copy the elements of stack

@@ -3,6 +3,7 @@ Consider lists of integer values ​​and implement a function that receives as
 The following figure illustrates this separation:
 This function must follow the prototype:
 List *separate(List *l, int n);
+The function should return a pointer to the second subdivision of the original list, while l should continue to point to the first element of the first subdivision of the list.
 */
 
 #include "list.h"

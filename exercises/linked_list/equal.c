@@ -19,7 +19,7 @@ void create_list(List **list) {
 
 // Inserts a new node with the given value after the given node
 // Inserts a new node at the end of the list
-void insert(List **list, int value) {
+void insert(List **list, char value) {
     List *new_node = (List *)malloc(sizeof(List));
     if (new_node == NULL) {
         printf("Memory allocation failed\n");

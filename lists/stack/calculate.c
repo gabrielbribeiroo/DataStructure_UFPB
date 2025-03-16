@@ -5,95 +5,82 @@ Implements a postfix calculator using a stack.
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h> // To check if a character is a digit
 
 #define MAX 100
 
-struct list {
-    char data[MAX];
+struct stack {
+    int data[MAX]; // Load the stack with integers
     int ctr;
 };
 
-// function prototypes
-void create(struct list *);
-int is_empty(struct list *);
-int is_full(struct list *);
-void push(struct list *, char);
-void pop(struct list *);
+// Functions to manipulate the stack
+void create(struct stack *l);
+int is_empty(struct stack *l);
+int is_full(struct stack *l);
+void push(struct stack *l, int data);
+int pop(struct stack *l);
 
-// creates a new stack
-void create(struct list *l) {
-    l = (struct list *)malloc(sizeof(struct list));
-    l->ctr = 0;
+void create(struct stack *l) {
+    l->ctr = 0; // Initialize the counter to 0 to indicate an empty stack
 }
 
-// checks if the stack is empty
-int is_empty(struct list *l) {
+int is_empty(struct stack *l) {
     return l->ctr == 0;
 }
 
-// checks if the stack is full
-int is_full(struct list *l) {
+int is_full(struct stack *l) {
     return l->ctr == MAX;
 }
 
-// pushes a new element to the stack
-void push(struct list *l, char data) {
+void push(struct stack *l, int data) {
     if (is_full(l)) {
         printf("The stack is full.\n");
         return;
     }
-    l->data[l->ctr] = data;
-    l->ctr++;
+    l->data[l->ctr++] = data; // Insert the data and increment ctr
 }
 
-// pops an element from the stack
-void pop(struct list *l) {
+int pop(struct stack *l) {
     if (is_empty(l)) {
         printf("The stack is empty.\n");
-        return;
+        exit(1); // End the program, as there is nothing to pop
     }
-    l->ctr--;
+    return l->data[--l->ctr]; // Decrement ctr and return the value
 }
 
-// calculates the result of the postfix expression
+// Main function to evaluate the postfix expression
 int main() {
-    struct list *l;
-    create(l);
+    struct stack l;
+    create(&l); // Initialize the stack
+
     char expression[MAX];
     printf("Enter the postfix expression: ");
     fgets(expression, MAX, stdin);
-    for (int i=0; i<strlen(expression); i++) {
-        if (expression[i] != '+' && expression[i] != '-' && expression[i] != '*' && expression[i] != '/') {
-            push(l, expression[i]);
+
+    for (int i = 0; i < strlen(expression); i++) {
+        if (isdigit(expression[i])) { // If the character is a digit, push it to the stack
+            push(&l, expression[i] - '0'); // Convert the character to an integer
         } 
-        else {
-            int a = l->data[l->ctr-1] - '0';
-            pop(l);
-            int b = l->data[l->ctr-1] - '0';
-            pop(l);
+        else if (expression[i] == '+' || expression[i] == '-' || 
+                 expression[i] == '*' || expression[i] == '/') {
+            int a = pop(&l);
+            int b = pop(&l);
             int result;
+
             switch (expression[i]) {
-                case '+':
-                    result = a + b;
-                    break;
-                case '-':
-                    result = a - b;
-                    break;
-                case '*':
-                    result = a * b;
-                    break;
-                case '/':
-                    result = a / b;
-                    break;
+                case '+': result = b + a; break;
+                case '-': result = b - a; break;
+                case '*': result = b * a; break;
+                case '/': result = b / a; break;
             }
 
-            push(l, result + '0');
+            push(&l, result); // Push the result back to the stack
         }
     }
 
-    pop(l);
-    printf("Result: %d\n", l->data[l->ctr-1] - '0');
-    free(l);
+    // The last element in the stack is the result
+    printf("Result: %d\n", pop(&l));
 
     return 0;
 }

@@ -95,13 +95,13 @@ void concatenate_stacks(Stack *p1, Stack *p2);
  * @param p A pointer to the head of the stack.
  * @return Stack* A pointer to the head of the copied stack.
  */
-Stack *copy_stack(Stack *p);
+Stack *stack_copy(Stack *p);
 
 /**
  * @brief Prints the stack.
  * @param p A pointer to the head of the stack.
  * @return void
  */
-void print_stack(Stack *p);
+void stack_print(Stack *p);
 
 #endif // end of the header guard

@@ -4,9 +4,18 @@ This function must obey the prototype:
 int equals(List *l1, List *l2);
 */
 
-#include "list.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct list List;
+// Definition of the structure of a list node
+typedef struct lst {
+    char data;
+    struct lst *next;
+} List;
+
+void create_list(List **list) {
+    *list = NULL;
+}
 
 // Inserts a new node with the given value after the given node
 // Inserts a new node at the end of the list
@@ -68,18 +77,20 @@ int equals(List *l1, List *l2) {
 
 int main() {
     List *l1, *l2; // lists to be compared
-    create(&l1); // create the first list
-    create(&l2); // create the second list
+
+    // create the lists
+    create_list(&l1);
+    create_list(&l2);
 
     // insert elements in the first list
-    insert(&l1, 1);
-    insert(&l1, 2);
-    insert(&l1, 3);
+    insert(&l1, 'a');
+    insert(&l1, 'b');
+    insert(&l1, 'c');
 
     // insert elements in the second list
-    insert(&l2, 1);
-    insert(&l2, 2);
-    insert(&l2, 3);
+    insert(&l2, 'a');
+    insert(&l2, 'b');
+    insert(&l2, 'c');
 
     // test if the lists are equal
     if (equals(l1, l2)) {

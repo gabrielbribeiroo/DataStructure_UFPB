@@ -10,6 +10,11 @@
 #include "route.h" 
 
 // list by vector
+// consult the element at the beginning of the list
+int consult_vector_list(struct vector *l) {
+    return l->data[l->start];
+}
+
 // clean the entire list
 void clean_vector_list(struct vector *l) {
     free(l);
@@ -25,6 +30,11 @@ void print_vector_list(struct vector *l) {
 
 
 // list by linked list
+// consult the element at the beginning of the list
+int consult_linked_list(struct queue *l) {
+    return l->head->data;
+}
+
 // clean the entire list
 void clean_linked_list(struct queue **l) {
     struct node *aux = (*l)->head; // aux pointer to the head of the queue
@@ -47,6 +57,11 @@ void print_linked_list(struct queue *l) {
 
 
 // list by doubly linked list
+// consult the element at the beginning of the list
+int consult_doubly_linked_list(struct dqueue *l) {
+    return l->head->data;
+}
+
 // clean the entire list
 void clean_doubly_linked_list(struct dqueue **l) {
     struct dnode *aux = (*l)->head; // aux pointer to the head of the queue

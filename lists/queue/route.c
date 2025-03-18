@@ -3,8 +3,8 @@
  * @brief Queue route implementation
  * 
  * @author Gabriel Ribeiro
- * @version 1.0
- * @date 2025-03-17
+ * @version 1.1
+ * @date 2025-03-18
  */
 
 #include "route.h" 

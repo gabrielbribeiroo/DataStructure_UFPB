@@ -37,7 +37,7 @@ void display_menu_linked_list() {
     printf("\nOption: ");
 }
 
-void display_menu_double_linked_list() {
+void display_menu_doubly_linked_list() {
     printf("\n1 - Insert at the end");
     printf("\n2 - Remove from the begin");
     printf("\n3 - Consult");

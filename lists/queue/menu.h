@@ -7,6 +7,6 @@
 void menu();
 void display_menu_vector_list();
 void display_menu_linked_list();
-void display_menu_double_linked_list();
+void display_menu_doubly_linked_list();
 
 #endif // end of the header guard

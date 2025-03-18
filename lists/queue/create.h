@@ -21,10 +21,10 @@ struct vector {
 
 /**
  * @brief Initializes the list to be empty.
- * @param l A pointer to the head of the vector.
+ * @param l A double pointer to the head of the vector.
  * @return void
  */
-void create_vector_list(struct vector *l);
+void create_vector_list(struct vector **l);
 
 /**
  * @brief Checks if the list is empty.

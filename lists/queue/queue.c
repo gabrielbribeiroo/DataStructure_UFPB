@@ -23,7 +23,7 @@ int main() {
         if (opt1 == 1) { 
             struct vector *l;
 
-            create_vector_list(l);
+            create_vector_list(&l);
 
             do {
                 display_menu_vector_list();

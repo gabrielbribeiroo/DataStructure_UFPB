@@ -33,6 +33,13 @@ void create_vector_list(struct vector *l);
  */
 int vector_empty(struct vector l);
 
+/**
+ * @brief Checks if the list is full.
+ * @param l The vector.
+ * @return int 1 if the list is full, 0 otherwise.
+ */
+
+
 
 // queue by linked list
 /**

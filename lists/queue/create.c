@@ -3,7 +3,7 @@
  * @brief Implementation of the function to create a queue.
  * 
  * @author Gabriel Ribeiro
- * @version 1.0
+ * @version 1.1
  * @date 2025-03-17
  */
 
@@ -22,6 +22,10 @@ int vector_empty(struct vector l) {
     return (l.n == 0); // returns 1 if the number of elements is 0
 }
 
+// checks if the list is full
+int vector_full(struct vector l) {
+    return (l.n == SIZE); // returns 1 if the number of elements is equal to the size of the vector
+}
 
 // queue by linked list
 // initializes the linked list to be empty 

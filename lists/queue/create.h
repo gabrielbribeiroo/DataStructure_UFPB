@@ -28,7 +28,7 @@ void create_vector_list(struct vector *l);
 
 /**
  * @brief Checks if the list is empty.
- * @param l The vector.
+ * @param l pointer to the head of the vector.
  * @return int 1 if the list is empty, 0 otherwise.
  */
 int vector_empty(struct vector l);
@@ -38,7 +38,7 @@ int vector_empty(struct vector l);
  * @param l The vector.
  * @return int 1 if the list is full, 0 otherwise.
  */
-
+int vector_full(struct vector *l);
 
 
 // queue by linked list
@@ -105,13 +105,13 @@ struct dqueue {
  * @param l A double pointer to the head of the doubly linked list.
  * @return void
  */
-void create_double_linked_list(struct dqueue **l);
+void create_doubly_linked_list(struct dqueue **l);
 
 /**
  * @brief Checks if the doubly linked list is empty.
  * @param l A pointer to the head of the doubly linked list.
  * @return int 1 if the list is empty, 0 otherwise.
  */
-int double_linked_list_empty(struct dqueue *l);
+int doubly_linked_list_empty(struct dqueue *l);
 
 #endif // end of the header guard

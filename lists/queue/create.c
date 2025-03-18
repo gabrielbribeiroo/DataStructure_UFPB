@@ -3,8 +3,8 @@
  * @brief Implementation of the function to create a queue.
  * 
  * @author Gabriel Ribeiro
- * @version 1.1
- * @date 2025-03-17
+ * @version 1.2
+ * @date 2025-03-18
  */
 
 #include "create.h" // include the header file with the function prototypes
@@ -23,8 +23,8 @@ int vector_empty(struct vector l) {
 }
 
 // checks if the list is full
-int vector_full(struct vector l) {
-    return (l.n == SIZE); // returns 1 if the number of elements is equal to the size of the vector
+int vector_full(struct vector *l) {
+    return (l->n == SIZE); // returns 1 if the number of elements is equal to the size of the vector
 }
 
 // queue by linked list

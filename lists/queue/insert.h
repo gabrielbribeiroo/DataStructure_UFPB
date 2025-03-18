@@ -19,7 +19,7 @@ void insert_vector(struct vector *l, int data);
  * @param data The data to be inserted.
  * @return void
  */
-void insert_linked_list(struct node **l, int data);
+void insert_linked_list(struct queue **l, int data);
 
 // queue by doubly linked list
 /**

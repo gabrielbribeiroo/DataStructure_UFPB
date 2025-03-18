@@ -3,7 +3,7 @@
  * @brief This file implements the deletion functions for the queue.
  * 
  * @author Gabriel Ribeiro
- * @version 1.0
+ * @version 1.1
  * @date 2025-03-17
  */
 
@@ -15,7 +15,7 @@ int remove_vector(struct vector *l) {
     int v; // creates a variable to store the value
     if (vector_empty(*l)) { // if the list is empty
         printf("The queue is empty.\n"); // prints a message
-        return; // returns
+        return -1; // returns
     }
     v = l->data[l->start]; // stores the value of the first element
     l->start = (l->start + 1) % SIZE; // increments the start index
@@ -30,7 +30,7 @@ int remove_linked_list(struct queue *l) {
     int v; // creates a variable to store the value
     if (linked_list_empty(l)) { // if the list is empty
         printf("The queue is empty.\n"); // prints a message
-        return; // returns
+        return -1; // returns
     }
     temp = l->head; // pointer to the head
     v = temp->data; // stores the value of the first element
@@ -49,7 +49,7 @@ int remove_doubly_linked_list(struct dqueue *l) {
     int v; // creates a variable to store the value
     if (doubly_linked_list_empty(l)) { // if the list is empty
         printf("The queue is empty.\n"); // prints a message
-        return; // returns
+        return -1; // returns
     }
     temp = l->head; // pointer to the head
     v = temp->data; // stores the value of the first element

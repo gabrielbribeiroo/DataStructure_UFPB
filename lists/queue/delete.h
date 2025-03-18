@@ -7,24 +7,24 @@
 /**
  * @brief Removes the first element of the queue
  * @param l pointer to the queue
- * @return void
+ * @return int
  */
-void remove_vector(struct vector *l);
+int remove_vector(struct vector *l);
 
 // queue by linked list
 /**
  * @brief Removes the first element of the queue
  * @param l pointer to the queue
- * @return void
+ * @return int 
  */
-void remove_linked_list(struct queue *l);
+int remove_linked_list(struct queue *l);
 
 // queue by doubly linked list
 /**
  * @brief Removes the first element of the queue
  * @param l pointer to the queue
- * @return void
+ * @return int
  */
-void remove_doubly_linked_list(struct dqueue *l);
+int remove_doubly_linked_list(struct dqueue *l);
 
 #endif // end of the header guard

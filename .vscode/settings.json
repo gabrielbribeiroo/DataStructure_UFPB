@@ -3,6 +3,8 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "route.h": "c",
-        "create.h": "c"
+        "create.h": "c",
+        "array": "c",
+        "type_traits": "c"
     }
 }

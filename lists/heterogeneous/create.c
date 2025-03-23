@@ -82,3 +82,12 @@ void create_c(struct c **cc) {
         (*cc)->a3 = 0;
     }
 }
+
+/**
+ * @brief Checks if the list is empty
+ * @param node A pointer to the head of the linked list.
+ * @return int Returns 1 if the list is empty, 0 otherwise. 
+ */
+int is_empty(struct node *l) {
+    return l == NULL;
+}

@@ -14,4 +14,6 @@ void create_a(struct a**);
 void create_b(struct b**);
 void create_c(struct c**);
 
+int is_empty(struct node*);
+
 #endif // end of the header guard

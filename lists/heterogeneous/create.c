@@ -108,3 +108,15 @@ void create_c(struct node **n) {
 int is_empty(struct node *l) {
     return l == NULL;
 }
+
+// Displays a menu for the user to select a shape type.
+int menu() {
+    int opt;
+    printf("\nMENU");
+    printf("\nRECTANGLE - 0");
+    printf("\nTRIANGLE - 1");
+    printf("\nCIRCLE - 2");
+    printf("\nEnter the type to manipulate: ");
+    scanf("%d", &opt);
+    return opt;
+}

@@ -34,21 +34,21 @@ struct circle;
 
 /**
  * @brief Creates and initializes a rectangle.
- * @param rect A double pointer to struct rectangle, where the allocated memory will be stored.
+ * @param rect A double pointer to struct node, where the allocated memory will be stored.
  */
-void create_a(struct rectangle**);
+void create_a(struct node**);
 
 /**
  * @brief Creates and initializes a triangle.
- * @param tri A double pointer to struct triangle, where the allocated memory will be stored.
+ * @param tri A double pointer to struct node, where the allocated memory will be stored.
  */
-void create_b(struct triangle**);
+void create_b(struct node**);
 
 /**
  * @brief Creates and initializes a circle.
- * @param circ A double pointer to struct circle, where the allocated memory will be stored.
+ * @param circ A double pointer to struct node, where the allocated memory will be stored.
  */
-void create_c(struct circle**);
+void create_c(struct node**);
 
 /**
  * @brief Checks if the list is empty
@@ -56,5 +56,11 @@ void create_c(struct circle**);
  * @return int Returns 1 if the list is empty, 0 otherwise. 
  */
 int is_empty(struct node*);
+
+/**
+ * @brief Displays a menu for the user to select a shape type.
+ * @return int The selected option (0 for Rectangle, 1 for Triangle, 2 for Circle).
+ */
+int menu();
 
 #endif // end of the header guard

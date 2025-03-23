@@ -6,51 +6,49 @@
 
 /**
  * @brief Structure representing a generic node in a linked list.
- * @param info Pointer to generic data
  * @param id Identifier for the node
+ * @param info Pointer to generic data
  * @param prox Pointer to the next node in the list
  */
 struct node;
 
 /**
- * @brief Structure representing an entity of type A.
- * @param x First integer value
- * @param y Second integer value
+ * @brief Structure representing a rectangle of type 0.
+ * @param b Base of the rectangle
+ * @param h Height of the rectangle
  */
-struct a;
+struct rectangle;
 
 /**
- * @brief Structure representing an entity of type B.
- * @param c Floating-point value
- * @param radius Integer radius value
+ * @brief Structure representing a triangle of type 1.
+ * @param b Base of the triangle
+ * @param h Height of the triangle
  */
-struct b;
+struct triangle;
 
 /**
- * @brief Structure representing an entity of type C.
- * @param a1 First integer value
- * @param a2 Second integer value
- * @param a3 Third integer value
+ * @brief Structure representing a circle of type 2.
+ * @param r Radius of the circle
  */
-struct c;
+struct circle;
 
 /**
- * @brief Creates and initializes a structure of type A.
- * @param aa A double pointer to struct a, where the allocated memory will be stored.
+ * @brief Creates and initializes a rectangle.
+ * @param rect A double pointer to struct rectangle, where the allocated memory will be stored.
  */
-void create_a(struct a**);
+void create_a(struct rectangle**);
 
 /**
- * @brief Creates and initializes a structure of type B.
- * @param bb A double pointer to struct b, where the allocated memory will be stored.
+ * @brief Creates and initializes a triangle.
+ * @param tri A double pointer to struct triangle, where the allocated memory will be stored.
  */
-void create_b(struct b**);
+void create_b(struct triangle**);
 
 /**
- * @brief Creates and initializes a structure of type C.
- * @param cc A double pointer to struct c, where the allocated memory will be stored.
+ * @brief Creates and initializes a circle.
+ * @param circ A double pointer to struct circle, where the allocated memory will be stored.
  */
-void create_c(struct c**);
+void create_c(struct circle**);
 
 /**
  * @brief Checks if the list is empty

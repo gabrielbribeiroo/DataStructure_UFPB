@@ -1,5 +1,5 @@
-#ifndef INSERT_H // checks if the header has already been included
-#define INSERT_H // if not, define the header
+#ifndef MANIPULATE_H // checks if the header has already been included
+#define MANIPULATE_H // if not, define the header
 
 #include "create.h"
 

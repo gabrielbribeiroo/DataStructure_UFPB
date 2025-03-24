@@ -1,13 +1,15 @@
 /**
- * @file insert.c
- * @brief Implementation of the functions to insert elements in a linked list.
+ * @file manipulate.c
+ * @brief Implementation of the functions to manipulate elements in a linked list.
  * 
  * @author Gabriel Ribeiro
- * @version 1.0
+ * @version 1.1
  * @date 2025-03-23
  */
 
-#include "insert.h" // include the header file with the function prototypes
+#include "manipulate.h" // include the header file with the function prototypes
+
+#define PI 3.14159
 
 // insert a new element at the beginning of the list
 void insert(struct node **n) {   

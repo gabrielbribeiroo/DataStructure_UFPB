@@ -9,52 +9,83 @@ struct node {
 
 // Function to create an empty linked list
 void create(struct node **n) {
-    n = (struct node **)malloc(sizeof(struct node *)); // Allocates memory for the list pointer
-    if (n == NULL) { // Checks if memory allocation was successful
-        printf("Memory allocation failed.\n");
-        return;
-    }
-    *n = NULL; // Initializes the list as empty
+    *n = NULL; // Initializes the list as empty (no need to allocate memory for a pointer)
 }
 
 // Function to insert a new node at the beginning of the linked list
 void insert(struct node **n) {
-    struct node *aux; // Temporary pointer for the new node
-    aux = (struct node*)malloc(sizeof(struct node)); // Allocates memory for the new node
+    struct node *aux = (struct node*)malloc(sizeof(struct node)); // Allocates memory for the new node
     if (aux == NULL) { // Checks if memory allocation was successful
         printf("Memory allocation failed.\n");
         return;
     }   
 
-    int data;
     printf("Enter the value to insert: ");
-    scanf("%d", &data); // Reads the value to be inserted
+    scanf("%d", &aux->data); // Reads the value to be inserted
 
-    aux->data = data; // Assigns the value to the new node
     aux->next = *n;   // Points the new node to the current head of the list
     *n = aux;         // Updates the head of the list to the new node
-
-    free(aux); // ERROR: This incorrectly frees the newly inserted node
 }
 
+// Function to insert a new node at the end of the linked list
 void insert_end(struct node **n, int d) {
-    struct node *aux, *new;
-    create(&new);
-    new->data = d;
-    new->next = NULL;
-    if (n == NULL) {
+    struct node *new = (struct node*)malloc(sizeof(struct node)); // Allocates memory for the new node
+    if (new == NULL) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+
+    new->data = d;    // Sets the data value
+    new->next = NULL; // The new node is the last one, so next is NULL
+
+    if (*n == NULL) { // If the list is empty, the new node becomes the head
         *n = new;
     }
     else {
-        aux = *n;
-        while (aux->next != NULL) {
+        struct node *aux = *n;
+        while (aux->next != NULL) { // Traverse the list to find the last node
             aux = aux->next;
         }
-        aux->next = new;
-        *n = aux;
+        aux->next = new; // Attach the new node at the end
     }
-    free(new);
-    free(aux);
+}
+
+// Function to insert a value in an ordered manner
+void ordered(struct node **n) {
+    struct node *new_list = NULL; // Creates a new list to store sorted elements
+
+    printf("Enter the value to insert: ");
+    int data;
+    scanf("%d", &data);
+
+    struct node *aux = *n; // Pointer to traverse the existing list
+
+    while (aux != NULL) {
+        if (aux->data < data) {
+            insert_end(&new_list, aux->data); // Inserts elements smaller than data
+        }
+        else {
+            insert_end(&new_list, data); // Inserts the new element before larger ones
+            data = 9999999; // Ensures data is only inserted once
+        }
+        aux = aux->next;
+    }
+
+    if (data != 9999999) { // If data wasn't inserted, add it at the end
+        insert_end(&new_list, data);
+    }
+
+    *n = new_list; // Update the original list with the sorted one
+}
+
+// Function to print the linked list
+void print_list(struct node *n) {
+    printf("List elements: ");
+    while (n != NULL) {
+        printf("%d -> ", n->data);
+        n = n->next;
+    }
+    printf("NULL\n");
 }
 
 // Main function
@@ -65,6 +96,11 @@ int main() {
     insert(&l); // Inserts elements into the list
     insert(&l);
     insert(&l);
+
+    print_list(l); // Print the list before ordering
+
+    ordered(&l); // Insert and maintain sorted order
+    print_list(l); // Print the sorted list
 
     return 0;
 }

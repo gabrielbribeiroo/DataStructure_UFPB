@@ -9,7 +9,7 @@ struct node {
 
 // Function to create an empty linked list
 void create(struct node **n) {
-    *n = NULL; // Initializes the list as empty (no need to allocate memory for a pointer)
+    *n = NULL; // Initializes the list as empty
 }
 
 // Function to insert a new node at the beginning of the linked list
@@ -78,6 +78,19 @@ void ordered(struct node **n) {
     *n = new_list; // Update the original list with the sorted one
 }
 
+// Function to remove the first element from the linked list
+void remove_start(struct node **n) {
+    if (*n == NULL) { // Checks if the list is empty
+        printf("The list is already empty.\n");
+        return;
+    }
+
+    struct node *temp = *n; // Temporary pointer to store the first node
+    *n = (*n)->next; // Update the head to the next node
+    free(temp); // Free the memory of the removed node
+    printf("First element removed successfully.\n");
+}
+
 // Function to print the linked list
 void print_list(struct node *n) {
     printf("List elements: ");
@@ -101,6 +114,9 @@ int main() {
 
     ordered(&l); // Insert and maintain sorted order
     print_list(l); // Print the sorted list
+
+    remove_start(&l); // Remove the first element
+    print_list(l); // Print the list after removal
 
     return 0;
 }

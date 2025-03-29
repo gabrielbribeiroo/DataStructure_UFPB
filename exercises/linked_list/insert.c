@@ -37,6 +37,26 @@ void insert(struct node **n) {
     free(aux); // ERROR: This incorrectly frees the newly inserted node
 }
 
+void insert_end(struct node **n, int d) {
+    struct node *aux, *new;
+    create(&new);
+    new->data = d;
+    new->next = NULL;
+    if (n == NULL) {
+        *n = new;
+    }
+    else {
+        aux = *n;
+        while (aux->next != NULL) {
+            aux = aux->next;
+        }
+        aux->next = new;
+        *n = aux;
+    }
+    free(new);
+    free(aux);
+}
+
 // Main function
 int main() {
     struct node *l; // Pointer to the head of the linked list

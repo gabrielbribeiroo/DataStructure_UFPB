@@ -14,6 +14,9 @@ typedef struct node Node;
 // Function prototype to create a new node
 Node *create(int, Node*, Node*);
 
+// Function prototype to print the entire tree (preorder traversal)
+void print(Node*);
+
 int main() {
     // Pointer to the root of the tree, initially NULL
     Node *tree = 0;
@@ -33,6 +36,9 @@ int main() {
     // Creating the children of node 6
     tree->right->left = create(5, 0, 0);  // Left child of 6 (5)
     tree->right->right = create(7, 0, 0); // Right child of 6 (7)
+
+    // Print the tree using a preorder traversal
+    print(tree);
 
     return 0; // End of the program
 }
@@ -54,4 +60,16 @@ Node *create(int value, Node *sleft, Node *sright) {
     new->right = sright;
 
     return new; // Return the pointer to the newly created node
+}
+
+// Function to print the tree using preorder traversal
+void print(Node *root) {
+    if (root) { // If the current node is not NULL
+        printf("%d ", root->data); // Print the value of the node
+        print(root->left);         // Recursively print the left subtree
+        print(root->right);        // Recursively print the right subtree
+    }
+    else {
+        return; // Base case: if the node is NULL, return
+    }
 }

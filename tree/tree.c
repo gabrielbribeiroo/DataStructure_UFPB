@@ -1,36 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Definition of the binary tree node structure
 struct node {
-    int data;
-    struct node *left;
-    struct node *right;
+    int data;            // Value stored in the node
+    struct node *left;   // Pointer to the left child
+    struct node *right;  // Pointer to the right child
 };
 
+// Define an alias "Node" for "struct node" to simplify usage
 typedef struct node Node;
 
+// Function prototype to create a new node
 Node *create(int, Node*, Node*);
 
 int main() {
+    // Pointer to the root of the tree, initially NULL
     Node *tree = 0;
+
+    // Manually constructing the binary tree:
+    // Creating the root node with value 4
     tree = create(4, 0, 0);
-    tree->left = create(2, 0, 0);
-    tree->right = create(6, 0, 0);
-    tree->left->left = create(1, 0, 0);
-    tree->left->right = create(3, 0, 0);
-    tree->right->left = create(5, 0, 0);
-    tree->right->right = create(7, 0, 0);
-    return 0;
+    
+    // Creating the children of the root node
+    tree->left = create(2, 0, 0);  // Left child (2)
+    tree->right = create(6, 0, 0); // Right child (6)
+
+    // Creating the children of node 2
+    tree->left->left = create(1, 0, 0);  // Left child of 2 (1)
+    tree->left->right = create(3, 0, 0); // Right child of 2 (3)
+
+    // Creating the children of node 6
+    tree->right->left = create(5, 0, 0);  // Left child of 6 (5)
+    tree->right->right = create(7, 0, 0); // Right child of 6 (7)
+
+    return 0; // End of the program
 }
 
+// Function to create a new tree node
 Node *create(int value, Node *sleft, Node *sright) {
+    // Dynamically allocate memory for a new node
     Node *new;
     new = (Node *)malloc(sizeof(Node));
+
+    // Check if memory allocation was successful
     if (!new) {
-        return 0;
+        return 0; // Return NULL in case of failure
     }
+
+    // Assign values to the new node
     new->data = value;
     new->left = sleft;
     new->right = sright;
-    return new;
+
+    return new; // Return the pointer to the newly created node
 }

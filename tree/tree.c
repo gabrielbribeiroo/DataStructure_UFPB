@@ -20,6 +20,9 @@ void print(Node*);
 // Funtction prototype to print the binary tree
 void print_ordered(Node*);
 
+// Function to free all nodes of a binary tree
+Node *clean(Node*);
+
 int main() {
     // Pointer to the root of the tree, initially NULL
     Node *tree = 0;
@@ -43,6 +46,8 @@ int main() {
     // Print the tree using a preorder traversal
     print(tree);
 
+    clean(tree);
+
     return 0; // End of the program
 }
 
@@ -64,6 +69,8 @@ Node *create(int value, Node *sleft, Node *sright) {
 
     return new; // Return the pointer to the newly created node
 }
+
+
 
 // Function to print the tree using preorder traversal
 void print(Node *root) {
@@ -94,4 +101,22 @@ void print_ordered(Node *root) {
     print_ordered(root->right);
 
     return; // Explicit return (optional, as void functions return automatically)
+}
+
+// Function to free all nodes of a binary tree
+Node *clean(Node *root) {
+    // If the root is not NULL, continue the recursion
+    if (root) {
+        // Recursively clean the left subtree
+        root->left = clean(root->left);
+        
+        // Recursively clean the right subtree
+        root->right = clean(root->right);
+        
+        // Free the current node
+        free(root);
+    }
+
+    // Return NULL to indicate that the tree has been cleared
+    return 0;
 }

@@ -17,6 +17,9 @@ Node *create(int, Node*, Node*);
 // Function prototype to print the entire tree (preorder traversal)
 void print(Node*);
 
+// Funtction prototype to print the binary tree
+void print_ordered(Node*);
+
 int main() {
     // Pointer to the root of the tree, initially NULL
     Node *tree = 0;
@@ -72,4 +75,23 @@ void print(Node *root) {
     else {
         return; // Base case: if the node is NULL, return
     }
+}
+
+// Function to print the binary tree in an ordered manner (in-order traversal)
+void print_ordered(Node *root) {
+    // Base case: if the current node is NULL, return (end recursion)
+    if (!root) {
+        return;
+    }
+
+    // Recursively print the left subtree
+    print_ordered(root->left);
+
+    // Print the current node's value
+    printf("%d ", root->data);
+
+    // Recursively print the right subtree
+    print_ordered(root->right);
+
+    return; // Explicit return (optional, as void functions return automatically)
 }

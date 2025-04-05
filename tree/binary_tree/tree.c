@@ -35,3 +35,14 @@ int main() {
     tree = clean(tree);
     return 0;
 }
+
+// Function to create a new node
+Node *create(int value) {
+    Node *new = (Node*)malloc(sizeof(Node));
+    if (!new) {
+        return NULL; // Memory allocation failed
+    }
+    new->data = value;
+    new->left = new->right = NULL;
+    return new;
+}

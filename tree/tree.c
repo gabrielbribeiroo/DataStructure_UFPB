@@ -1,3 +1,13 @@
+/**
+ * This program implements a simple binary tree in C. It includes:
+ * - A structure definition for tree nodes.
+ * - Functions to create nodes, print the tree (preorder and in-order traversals), 
+ *   and clean up memory by freeing all nodes.
+ * - A main function that demonstrates the creation of a binary tree, 
+ *   prints its elements, and cleans up memory.
+ */
+
+// Include libraries
 #include <stdio.h>
 #include <stdlib.h>
 

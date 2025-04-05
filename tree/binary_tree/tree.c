@@ -46,3 +46,19 @@ Node *create(int value) {
     new->left = new->right = NULL;
     return new;
 }
+
+// Function to insert a value into the BST
+Node *insert(Node *root, int value) {
+    if (!root) {
+        return create(value); // Create a new node if tree is empty
+    }
+
+    if (value < root->data) {
+        root->left = insert(root->left, value); // Insert into the left subtree
+    }
+    else if (value > root->data) {
+        root->right = insert(root->right, value); // Insert into the right subtree
+    }
+
+    return root; // Return the unchanged node pointer
+}

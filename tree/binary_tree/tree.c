@@ -16,3 +16,22 @@ Node* create(int);
 Node* insert(Node*, int);
 void show(Node*);
 Node* clean(Node*);
+
+int main() {
+    Node *tree = NULL; // Initialize an empty tree
+
+    // Insert elements into the tree
+    tree = insert(tree, 8);
+    tree = insert(tree, 3);
+    tree = insert(tree, 2);
+    tree = insert(tree, 5);
+    tree = insert(tree, 10);
+
+    printf("Tree in sorted order: ");
+    show(tree);
+    printf("\n");
+
+    // Clean up the tree
+    tree = clean(tree);
+    return 0;
+}

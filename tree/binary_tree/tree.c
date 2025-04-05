@@ -71,3 +71,13 @@ void show(Node *root) {
         show(root->right);
     }
 }
+
+// Function to free all nodes in the tree
+Node *clean(Node *root) {
+    if (root) {
+        root->left = clean(root->left);
+        root->right = clean(root->right);
+        free(root);
+    }
+    return NULL;
+}

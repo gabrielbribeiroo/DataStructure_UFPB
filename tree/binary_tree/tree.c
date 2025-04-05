@@ -62,3 +62,12 @@ Node *insert(Node *root, int value) {
 
     return root; // Return the unchanged node pointer
 }
+
+// Function to show the tree in sorted order (in-order traversal)
+void show(Node *root) {
+    if (root) {
+        show(root->left);
+        printf("%d ", root->data);
+        show(root->right);
+    }
+}

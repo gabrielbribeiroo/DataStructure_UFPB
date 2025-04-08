@@ -1,3 +1,7 @@
+/*
+The code contains two recursive functions that operate on a binary tree.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -17,6 +17,8 @@ Node* insert(Node*, int);
 void show(Node*);
 Node* clean(Node*);
 int node_count(Node*);
+int height(Node*);
+
 
 int main() {
     Node *tree = NULL; // Initialize an empty tree
@@ -93,4 +95,15 @@ int node_count(Node *root) {
     a = node_count(root->left); // Count nodes in the left subtree
     b = node_count(root->right); // Count nodes in the right subtree
     return (a + b + 1); // Return total count (left + right + 1 for the current node)
+}
+
+// Function to calculate the height of the tree
+int height(Node *root) {
+    int a, b;
+    if (!root) {
+        return 0; // Base case: if the node is NULL, return 0
+    }
+    a = height(root->left); // Height of the left subtree
+    b = height(root->right); // Height of the right subtree
+    return (a > b ? a : b) + 1; // Return the maximum height + 1 for the current node
 }

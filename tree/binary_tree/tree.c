@@ -34,6 +34,11 @@ int main() {
     show(tree);
     printf("\n");
 
+    printf("Number of nodes: %d\n", node_count(tree)); // Count the number of nodes
+    printf("Height of the tree: %d\n", height(tree)); // Calculate the height of the tree
+    printf("Height of the left subtree: %d\n", height(tree->left)); // Height of the left subtree
+    printf("Height of the right subtree: %d\n", height(tree->right)); // Height of the right subtree
+
     // Clean up the tree
     tree = clean(tree);
     return 0;

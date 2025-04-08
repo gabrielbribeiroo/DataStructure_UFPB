@@ -70,6 +70,7 @@ void show(Node *root) {
         printf("%d ", root->data);
         show(root->right);
     }
+    else return; // Base case: if the node is NULL, do nothing
 }
 
 // Function to free all nodes in the tree

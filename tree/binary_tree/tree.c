@@ -14,11 +14,12 @@ typedef struct node Node;
 // Function prototypes
 Node* create(int);
 Node* insert(Node*, int);
-void show(Node*);
+void show_preorder(Node*);
+void show_inorder(Node*);
+void show_postorder(Node*);
 Node* clean(Node*);
 int node_count(Node*);
 int height(Node*);
-
 
 int main() {
     Node *tree = NULL; // Initialize an empty tree
@@ -30,8 +31,14 @@ int main() {
     tree = insert(tree, 5);
     tree = insert(tree, 10);
 
+    printf("Tree in pre-order: ");
+    show_preorder(tree); // Show the tree in pre-order traversal
+    printf("\n");
     printf("Tree in sorted order: ");
-    show(tree);
+    show_inorder(tree);
+    printf("\n");
+    printf("Tree in post-order: ");
+    show_postorder(tree); // Show the tree in post-order traversal
     printf("\n");
 
     printf("Number of nodes: %d\n", node_count(tree)); // Count the number of nodes
@@ -71,12 +78,32 @@ Node *insert(Node *root, int value) {
     return root; // Return the unchanged node pointer
 }
 
-// Function to show the tree in sorted order (in-order traversal)
-void show(Node *root) {
+// Function to show the tree in pre-order traversal
+void show_preorder(Node *root) {
     if (root) {
-        show(root->left);
+        printf("%d ", root->data); // Visit the root
+        show_preorder(root->left); // Traverse the left subtree
+        show_preorder(root->right); // Traverse the right subtree
+    }
+    else return; // Base case: if the node is NULL, do nothing
+}
+
+// Function to show the tree in sorted order (in-order traversal)
+void show_inorder(Node *root) {
+    if (root) {
+        show_inorder(root->left);
         printf("%d ", root->data);
-        show(root->right);
+        show_inorder(root->right);
+    }
+    else return; // Base case: if the node is NULL, do nothing
+}
+
+// Function to show the tree in post-order traversal
+void show_postorder(Node *root) {
+    if (root) {
+        show_postorder(root->left); // Traverse the left subtree
+        show_postorder(root->right); // Traverse the right subtree
+        printf("%d ", root->data); // Visit the root
     }
     else return; // Base case: if the node is NULL, do nothing
 }

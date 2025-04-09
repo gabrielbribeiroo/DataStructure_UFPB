@@ -17,6 +17,7 @@ typedef struct node Node;
 
 // Function prototypes
 Node* create(int);
+Node *rotate_right(Node*);
 Node* insert(Node*, int);
 Node* remove(Node*, int);
 void show_preorder(Node*);
@@ -65,6 +66,14 @@ Node *create(int value) {
     new->data = value;
     new->left = new->right = NULL;
     return new;
+}
+
+// Function to rotate the tree to the right
+Node *rotate_right(Node *root) {
+    Node *new_root = root->left; // New root is the left child of the current root
+    root->left = new_root->right; // Move the right child of the new root to the left child of the current root
+    new_root->right = root; // Set the current root as the right child of the new root
+    return new_root; // Return the new root
 }
 
 // Function to insert a value into the BST

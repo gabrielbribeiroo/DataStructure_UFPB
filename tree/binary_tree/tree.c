@@ -18,6 +18,7 @@ typedef struct node Node;
 // Function prototypes
 Node* create(int);
 Node* insert(Node*, int);
+Node* remove(Node*, int);
 void show_preorder(Node*);
 void show_inorder(Node*);
 void show_postorder(Node*);
@@ -79,6 +80,41 @@ Node *insert(Node *root, int value) {
         root->right = insert(root->right, value); // Insert into the right subtree
     }
 
+    return root; // Return the unchanged node pointer
+}
+
+// Function to remove a node from the BST
+Node *remove(Node *root, int value) {
+    if (!root) {
+        return NULL; // Base case: if the node is NULL, return NULL
+    }
+
+    if (value < root->data) {
+        root->left = remove(root->left, value); // Remove from the left subtree
+    }
+    else if (value > root->data) {
+        root->right = remove(root->right, value); // Remove from the right subtree
+    }
+    else { // Node with only one child or no child
+        if (!root->left) {
+            Node *temp = root->right;
+            free(root);
+            return temp; // Return the right child
+        }
+        else if (!root->right) {
+            Node *temp = root->left;
+            free(root);
+            return temp; // Return the left child
+        }
+
+        // Node with two children: get the inorder successor (smallest in the right subtree)
+        Node *temp = root->right;
+        while (temp && temp->left) {
+            temp = temp->left;
+        }
+        root->data = temp->data; // Copy the inorder successor's data to this node
+        root->right = remove(root->right, temp->data); // Delete the inorder successor
+    }
     return root; // Return the unchanged node pointer
 }
 

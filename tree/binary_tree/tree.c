@@ -20,7 +20,7 @@ Node* create(int);
 Node* rotate_right(Node*);
 Node* rotate_left(Node*);
 Node* insert(Node*, int);
-Node* remove(Node*, int);
+Node* delete(Node*, int);
 void show_preorder(Node*);
 void show_inorder(Node*);
 void show_postorder(Node*);
@@ -128,40 +128,62 @@ Node *insert(Node *root, int value) {
     return root; // Already balanced
 }    
 
-
-// Function to remove a node from the BST
-Node *remove(Node *root, int value) {
+// Function to delete a node from the BST
+Node *delete(Node *root, int value) {
     if (!root) {
-        return NULL; // Base case: if the node is NULL, return NULL
+        return NULL; // Base case
     }
 
+    // Step 1: Search for the value to be removed
     if (value < root->data) {
-        root->left = remove(root->left, value); // Remove from the left subtree
+        root->left = delete(root->left, value);
     }
     else if (value > root->data) {
-        root->right = remove(root->right, value); // Remove from the right subtree
+        root->right = delete(root->right, value);
     }
-    else { // Node with only one child or no child
-        if (!root->left) {
-            Node *temp = root->right;
+    else {
+        // Node with 0 or 1 child
+        if (!root->left || !root->right) {
+            Node *temp = root->left ? root->left : root->right;
             free(root);
-            return temp; // Return the right child
-        }
-        else if (!root->right) {
-            Node *temp = root->left;
-            free(root);
-            return temp; // Return the left child
+            return temp;
         }
 
-        // Node with two children: get the inorder successor (smallest in the right subtree)
+        // Node with 2 children: find the in-order successor
         Node *temp = root->right;
-        while (temp && temp->left) {
+        while (temp && temp->left)
             temp = temp->left;
-        }
-        root->data = temp->data; // Copy the inorder successor's data to this node
-        root->right = remove(root->right, temp->data); // Delete the inorder successor
+
+        root->data = temp->data;
+        root->right = delete(root->right, temp->data);
     }
-    return root; // Return the unchanged node pointer
+
+    // Step 2: Rebalance AVL
+    int balance = get_balance(root);
+
+    // Cases of imbalance:
+
+    // Left Left (LL)
+    if (balance > 1 && get_balance(root->left) >= 0)
+        return rotate_right(root);
+
+    // Left Right (LR)
+    if (balance > 1 && get_balance(root->left) < 0) {
+        root->left = rotate_left(root->left);
+        return rotate_right(root);
+    }
+
+    // Right Right (RR)
+    if (balance < -1 && get_balance(root->right) <= 0)
+        return rotate_left(root);
+
+    // Right Left (RL)
+    if (balance < -1 && get_balance(root->right) > 0) {
+        root->right = rotate_right(root->right);
+        return rotate_left(root);
+    }
+
+    return root;
 }
 
 // Function to show the tree in pre-order traversal

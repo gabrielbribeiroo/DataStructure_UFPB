@@ -89,19 +89,45 @@ Node *rotate_left(Node *root) {
 
 // Function to insert a value into the BST
 Node *insert(Node *root, int value) {
-    if (!root) {
-        return create(value); // Create a new node if tree is empty
+    // Standard BST insertion
+    if (!root)
+        return create(value);
+
+    if (value < root->data)
+        root->left = insert(root->left, value);
+    else if (value > root->data)
+        root->right = insert(root->right, value);
+    else
+        return root; // Ignore duplicates
+    
+    // Check the balance factor
+    int balance = get_balance(root);
+
+    // Cases of imbalance
+
+    // Left Left (LL)
+    if (balance > 1 && value < root->left->data)
+        return rotate_right(root);
+
+    // Right Right (RR)
+    if (balance < -1 && value > root->right->data)
+        return rotate_left(root);
+
+    // Left Right (LR)
+    if (balance > 1 && value > root->left->data) {
+        root->left = rotate_left(root->left);
+        return rotate_right(root);
     }
 
-    if (value < root->data) {
-        root->left = insert(root->left, value); // Insert into the left subtree
-    }
-    else if (value > root->data) {
-        root->right = insert(root->right, value); // Insert into the right subtree
+    // Right Left (RL)
+    if (balance < -1 && value < root->right->data) {
+        root->right = rotate_right(root->right);
+        return rotate_left(root);
     }
 
-    return root; // Return the unchanged node pointer
-}
+    return root; // Already balanced
+}    
+
 
 // Function to remove a node from the BST
 Node *remove(Node *root, int value) {

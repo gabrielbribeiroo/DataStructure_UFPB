@@ -27,6 +27,8 @@ void show_postorder(Node*);
 Node* clean(Node*);
 int node_count(Node*);
 int height(Node*);
+int max(int, int);
+int get_balance(Node*);
 
 int main() {
     Node *tree = NULL; // Initialize an empty tree
@@ -196,4 +198,15 @@ int height(Node *root) {
     a = height(root->left); // Height of the left subtree
     b = height(root->right); // Height of the right subtree
     return (a > b ? a : b) + 1; // Return the maximum height + 1 for the current node
+}
+
+// Function to get the maximum of two integers
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+// Function to get the balance of a node
+int get_balance(Node *node) {
+    if (!node) return 0;
+    return height(node->left) - height(node->right);
 }

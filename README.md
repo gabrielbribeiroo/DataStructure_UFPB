@@ -1,27 +1,40 @@
-# Data Structure
+# Data Structures
 
-## Abstract
-This repository contains exercise codes for the Data Structure discipline carried out in the C language.
+## 📚 Overview
+This repository contains practical exercises from the **Data Structures** course, developed in the C programming language. The code explores and implements core data structures commonly used in computer science.
 
-## Goals
-- **Code organization**: Manipulate and access data in multiple formats.
-- **Efficiency and performance**: Maximize software effectiveness.
-- **Optimization**: Optimize algorithm time and space.
-- **Operation of data processing**: Have an in-depth understanding of efficiently storing, accessing, and manipulating data.
+## 🎯 Learning Objectives
+- 📂 **Data organization**: Understand how to manipulate and access data using different structures (list, queue, stack, and tree).
+- ⚙️ **Efficiency and performance**: Apply techniques to enhance the effectiveness of algorithms and programs.
+- 🚀 **Optimization**: Reduce execution time and memory usage.
+- 🔍 **Data processing**: Gain a deep understanding of how to store, access, and manipulate data efficiently.
 
-## Languages
-<div style="display: inline_block"><cbr>
-  <img align = "top" alt = "gabrielbribeiroo_C" height = "50" width = "50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" /> 
+## 🧠 Practiced Structures
+- **Lists**: Insertion, deletion, search, and traversal.
+- **Queues**: Enqueue and dequeue operations (FIFO).
+- **Stacks**: Push/pop using pointers (LIFO).
+- **Trees**:
+  - Binary Search Trees (BST)
+  - AVL Trees (with self-balancing)
+  - Traversals: pre-order, in-order, post-order
+
+## 💻 Language Used
+<div style="display: inline_block"><br>
+  <img align = "top" alt = "C Language" height = "50" width = "50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" />
 </div>
 
-## Tools
-- **IDEs (Integrated Development Environments)**: Some environments such as Visual Studio Code (VS Code) were used to facilitate visualization.
-- **Command prompt**: Using the terminal to compile codes.
+## 🛠️ Tools
+- **Visual Studio Code**: For development, organization, and testing of `.c` files.
+- **Terminal compilers**: Using `gcc` and executing via command prompt or PowerShell.
 
-<div style="display: inline_block"><cbr>
-  <img align = "top" alt = "gabrielbribeiroo_VSCode" height = "50" width = "50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />
-  <img align = "top" alt = "gabrielbribeiroo_PowerShell" height = "50" width = "50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powershell/powershell-original.svg" /> 
+<div style="display: inline_block"><br>
+  <img align = "top" alt = "VS Code" height = "50" width = "50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" />
+  <img align = "top" alt = "PowerShell" height = "50" width = "50" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powershell/powershell-original.svg" />
 </div>
 
-## License
-This project is licensed under the MIT License.
+## 📄 License
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+👨‍💻 Developed as part of the learning journey in data structures, focusing on hands-on practice and a solid understanding of fundamental programming concepts.

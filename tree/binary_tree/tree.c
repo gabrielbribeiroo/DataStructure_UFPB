@@ -34,11 +34,26 @@ int main() {
     Node *tree = NULL; // Initialize an empty tree
 
     // Insert elements into the tree
+    /*
     tree = insert(tree, 8);
     tree = insert(tree, 3);
     tree = insert(tree, 2);
     tree = insert(tree, 5);
     tree = insert(tree, 10);
+    */
+
+    tree = insert(tree, 15);
+    tree = insert(tree, 22);
+    tree = insert(tree, 12);
+    tree = insert(tree, 14);
+    tree = insert(tree, 17);
+    tree = insert(tree, 10);
+    tree = insert(tree, 24);
+    tree = insert(tree, 19);
+    tree = insert(tree, 21);
+    tree = insert(tree, 11);
+    tree = insert(tree, 18);
+    tree = insert(tree, 16);
 
     printf("Tree in pre-order: ");
     show_preorder(tree); // Show the tree in pre-order traversal

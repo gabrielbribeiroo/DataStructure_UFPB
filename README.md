@@ -1,4 +1,4 @@
-# Data Structures in C
+# Data Structures
 
 ## 📚 Overview
 This repository contains practical exercises from the **Data Structures** course, developed in the C programming language. The code explores and implements core data structures commonly used in computer science.

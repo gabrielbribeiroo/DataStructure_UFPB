@@ -93,9 +93,69 @@ void add_type2_to_graph(Type1 *graph, int t1_value, int t2_value) {
     }
     if (current_t1 != NULL) {
         add_type2_to_type1(current_t1, t2_value);
-    } else {
+    } 
+    else {
         fprintf(stderr, "Type1 with value %d not found\n", t1_value);
     }
+}
+
+void remove_type2_from_type1(Type1 *t1, int value) {
+    Type2 *current_t2 = t1->t2;
+    Type2 *prev_t2 = NULL;
+    while (current_t2 != NULL && current_t2->data != value) {
+        prev_t2 = current_t2;
+        current_t2 = current_t2->next;
+    }
+    if (current_t2 != NULL) {
+        if (prev_t2 != NULL) {
+            prev_t2->next = current_t2->next;
+        } else {
+            t1->t2 = current_t2->next;
+        }
+        free(current_t2);
+    } 
+    else {
+        fprintf(stderr, "Type2 with value %d not found\n", value);
+    }
+}
+
+void remove_type1_from_graph(Type1 **graph, int value) {
+    Type1 *current_t1 = *graph;
+    Type1 *prev_t1 = NULL;
+    while (current_t1 != NULL && current_t1->data != value) {
+        prev_t1 = current_t1;
+        current_t1 = current_t1->t1;
+    }
+    if (current_t1 != NULL) {
+        if (prev_t1 != NULL) {
+            prev_t1->t1 = current_t1->t1;
+        } 
+        else {
+            *graph = current_t1->t1;
+        }
+        free_type1(current_t1);
+    } 
+    else {
+        fprintf(stderr, "Type1 with value %d not found\n", value);
+    }
+}
+
+void remove_type2_from_graph(Type1 *graph, int t1_value, int t2_value) {
+    Type1 *current_t1 = graph;
+    while (current_t1 != NULL && current_t1->data != t1_value) {
+        current_t1 = current_t1->t1;
+    }
+    if (current_t1 != NULL) {
+        remove_type2_from_type1(current_t1, t2_value);
+    } 
+    else {
+        fprintf(stderr, "Type1 with value %d not found\n", t1_value);
+    }
+}
+
+void remove_graph(Type1 **graph) {
+    free_graph(*graph);
+    *graph = NULL;
 }
 
 int main() {

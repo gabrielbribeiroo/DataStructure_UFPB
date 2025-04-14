@@ -182,6 +182,15 @@ void print_graph_structure(Type1 *graph) {
     }
 }
 
+void print_graph(Type1 *graph) {
+    if (graph != NULL) {
+        print_graph_structure(graph);
+    } 
+    else {
+        printf("Graph is NULL\n");
+    }
+}
+
 int main() {
     return 0;
 }

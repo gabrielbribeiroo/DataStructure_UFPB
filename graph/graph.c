@@ -41,6 +41,9 @@ Type2 *create_type2(int value) {
     return new_type2;
 }
 
+// Forward declaration of free_type2
+void free_type2(Type2 *t2);
+
 void free_type1(Type1 *t1) {
     if (t1 != NULL) {
         free_type2(t1->t2);
@@ -192,5 +195,47 @@ void print_graph(Type1 *graph) {
 }
 
 int main() {
+    Type1 *graph = NULL;
+    
+    add_type1_to_graph(&graph, 1);
+    add_type1_to_graph(&graph, 2);
+    add_type1_to_graph(&graph, 3);
+
+
+    add_type2_to_graph(graph, 1, 10);
+    add_type2_to_graph(graph, 1, 20);
+    add_type2_to_graph(graph, 2, 30);
+    add_type2_to_graph(graph, 2, 40);
+    add_type2_to_graph(graph, 3, 50);
+    add_type2_to_graph(graph, 3, 60);
+
+    printf("Graph structure:\n");
+    print_graph(graph);
+
+    printf("\nRemoving Type2 with value 20 from Type1 with value 1:\n");
+    remove_type2_from_graph(graph, 1, 20);
+    print_graph(graph);
+
+    printf("\nRemoving Type1 with value 2:\n");
+    remove_type1_from_graph(&graph, 2);
+    print_graph(graph);
+
+    printf("\nRemoving Type1 with value 3:\n");
+    remove_type1_from_graph(&graph, 3);
+    print_graph(graph);
+
+    printf("\nRemoving Type1 with value 1:\n");
+    remove_type1_from_graph(&graph, 1);
+    print_graph(graph);
+
+    printf("\nRemoving graph:\n");
+    remove_graph(&graph);
+    print_graph(graph);
+
+    printf("Graph removed successfully.\n");
+
+    // Free the graph memory
+    free_graph(graph);
+
     return 0;
 }

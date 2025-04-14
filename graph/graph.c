@@ -61,19 +61,6 @@ void free_graph(Type1 *graph) {
     }
 }
 
-void print_graph(Type1 *graph) {
-    Type1 *current_t1 = graph;
-    while (current_t1 != NULL) {
-        printf("Type1 data: %d\n", current_t1->data);
-        Type2 *current_t2 = current_t1->t2;
-        while (current_t2 != NULL) {
-            printf("  Type2 data: %d\n", current_t2->data);
-            current_t2 = current_t2->next;
-        }
-        current_t1 = current_t1->t1;
-    }
-}
-
 void add_type2_to_type1(Type1 *t1, int value) {
     Type2 *new_t2 = create_type2(value);
     new_t2->next = t1->t2;
@@ -156,6 +143,43 @@ void remove_type2_from_graph(Type1 *graph, int t1_value, int t2_value) {
 void remove_graph(Type1 **graph) {
     free_graph(*graph);
     *graph = NULL;
+}
+
+void print_type1(Type1 *t1) {
+    if (t1 != NULL) {
+        printf("Type1 data: %d\n", t1->data);
+        Type2 *current_t2 = t1->t2;
+        while (current_t2 != NULL) {
+            printf("  Type2 data: %d\n", current_t2->data);
+            current_t2 = current_t2->next;
+        }
+    } 
+    else {
+        printf("Type1 is NULL\n");
+    }
+}
+
+void print_type2(Type2 *t2) {
+    if (t2 != NULL) {
+        printf("Type2 data: %d\n", t2->data);
+        print_type2(t2->next);
+    } 
+    else {
+        printf("Type2 is NULL\n");
+    }
+}
+
+void print_graph_structure(Type1 *graph) {
+    Type1 *current_t1 = graph;
+    while (current_t1 != NULL) {
+        printf("Type1 data: %d\n", current_t1->data);
+        Type2 *current_t2 = current_t1->t2;
+        while (current_t2 != NULL) {
+            printf("  Type2 data: %d\n", current_t2->data);
+            current_t2 = current_t2->next;
+        }
+        current_t1 = current_t1->t1;
+    }
 }
 
 int main() {

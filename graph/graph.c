@@ -74,6 +74,30 @@ void print_graph(Type1 *graph) {
     }
 }
 
+void add_type2_to_type1(Type1 *t1, int value) {
+    Type2 *new_t2 = create_type2(value);
+    new_t2->next = t1->t2;
+    t1->t2 = new_t2;
+}
+
+void add_type1_to_graph(Type1 **graph, int value) {
+    Type1 *new_t1 = create_type1(value);
+    new_t1->t1 = *graph;
+    *graph = new_t1;
+}
+
+void add_type2_to_graph(Type1 *graph, int t1_value, int t2_value) {
+    Type1 *current_t1 = graph;
+    while (current_t1 != NULL && current_t1->data != t1_value) {
+        current_t1 = current_t1->t1;
+    }
+    if (current_t1 != NULL) {
+        add_type2_to_type1(current_t1, t2_value);
+    } else {
+        fprintf(stderr, "Type1 with value %d not found\n", t1_value);
+    }
+}
+
 int main() {
     return 0;
 }

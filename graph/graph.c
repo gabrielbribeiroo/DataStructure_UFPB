@@ -61,6 +61,19 @@ void free_graph(Type1 *graph) {
     }
 }
 
+void print_graph(Type1 *graph) {
+    Type1 *current_t1 = graph;
+    while (current_t1 != NULL) {
+        printf("Type1 data: %d\n", current_t1->data);
+        Type2 *current_t2 = current_t1->t2;
+        while (current_t2 != NULL) {
+            printf("  Type2 data: %d\n", current_t2->data);
+            current_t2 = current_t2->next;
+        }
+        current_t1 = current_t1->t1;
+    }
+}
+
 int main() {
     return 0;
 }

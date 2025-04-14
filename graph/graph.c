@@ -41,6 +41,26 @@ Type2 *create_type2(int value) {
     return new_type2;
 }
 
+void free_type1(Type1 *t1) {
+    if (t1 != NULL) {
+        free_type2(t1->t2);
+        free(t1);
+    }
+}
+
+void free_type2(Type2 *t2) {
+    if (t2 != NULL) {
+        free_type2(t2->next);
+        free(t2);
+    }
+}
+
+void free_graph(Type1 *graph) {
+    if (graph != NULL) {
+        free_type1(graph);
+    }
+}
+
 int main() {
     return 0;
 }

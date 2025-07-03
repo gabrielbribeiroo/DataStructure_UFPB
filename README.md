@@ -1,7 +1,7 @@
-# Data Structures
+# Data Structures 1
 
 ## 📚 Overview
-This repository contains practical exercises from the **Data Structures** course, developed in the C programming language. The code explores and implements core data structures commonly used in computer science.
+This repository contains practical exercises from the **Data Structures 1** course, developed in the C programming language. The code explores and implements core data structures commonly used in computer science.
 
 ## 🎯 Learning Objectives
 - 📂 **Data organization**: Understand how to manipulate and access data using different structures (list, queue, stack, and tree).
